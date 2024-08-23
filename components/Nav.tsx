@@ -1,7 +1,6 @@
 import AuthButton from "@/components/AuthButton";
 import Link from "next/link";
 import Icon from "./Icons";
-import DialogTrigger from "./DialogTrigger";
 
 export default function Nav() {
   return (
@@ -60,7 +59,6 @@ export default function Nav() {
           </nav>
           <div>
             <AuthButton />
-            {/* <DialogTrigger /> */}
           </div>
         </div>
       </div>

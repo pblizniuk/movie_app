@@ -19,7 +19,7 @@ export async function deleteFromWishlist(formData: FormData) {
       throw new Error(error.message)
     }
 
-      return revalidatePath('/notes')
+      return revalidatePath('/wishlist')
 }
 
 export async function addToWishlist(formData: FormData) {

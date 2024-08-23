@@ -23,9 +23,11 @@ export const metadata = {
 const outfit = Outfit({ subsets: ["latin"] });
 
 export default function RootLayout({
-  children
+  children,
+  modal
 }: {
   children: React.ReactNode;
+  modal: React.ReactNode
 }) {
 
   return (
@@ -36,6 +38,7 @@ export default function RootLayout({
         <footer className="w-full border-t border-t-foreground/10 p-8 mt-16 flex justify-center text-center text-xs">
           <p>&copy; {new Date().getFullYear()} <span className={`font-rock-salt pl-3 text-xs font-extrabold text-lime-500`}>Screen<span className="text-foreground/80">Bits </span></span>Movie Trailer App by Paul Blizniuk</p>
         </footer>
+        {modal}
       </body>
     </html>
   );
