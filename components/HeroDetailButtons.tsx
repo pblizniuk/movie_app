@@ -1,8 +1,13 @@
-
 import WishlistButton from './WishlistButton'
-import WatchTrailerButton from './WatchTrailerButton';
+import WatchTrailerButton from './WatchTrailerButton'
 
-export default function HeroDetailButtons({ id, trailerKey }: { id: number, trailerKey: string }) {
+export default function HeroDetailButtons({
+  id,
+  trailerKey,
+}: {
+  id: number
+  trailerKey: string
+}) {
   return (
     <>
       <div className="mb-4 flex gap-4">

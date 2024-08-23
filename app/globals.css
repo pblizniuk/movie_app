@@ -4,12 +4,11 @@
 
 @layer base {
   :root {
-      --btn-background: 200 10% 9%;
-      --btn-background-hover: 200 10% 12%;
-      --foreground: 200 20% 96%;
-      --swiper-theme-color-alt: rgb(132 204 22);
+    --btn-background: 200 10% 9%;
+    --btn-background-hover: 200 10% 12%;
+    --foreground: 200 20% 96%;
+    --swiper-theme-color-alt: rgb(132 204 22);
   }
-
 }
 
 .font-rock-salt {

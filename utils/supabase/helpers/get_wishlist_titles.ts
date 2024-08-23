@@ -1,15 +1,14 @@
 'use server'
-import { createClient } from "@/utils/supabase/server";
-import { getUser } from "@/utils/supabase/helpers/get_user";
+import { createClient } from '@/utils/supabase/server'
+import { getUser } from '@/utils/supabase/helpers/get_user'
 
 export async function getWishlistTitles() {
-
   const id = await getUser()
-  if(!id) {
+  if (!id) {
     return null
   }
 
-  const supabase = createClient();
+  const supabase = createClient()
   const { data, error } = await supabase
     .from('wishlist')
     .select()
@@ -22,6 +21,6 @@ export async function getWishlistTitles() {
 
   return {
     data,
-    error
+    error,
   }
 }

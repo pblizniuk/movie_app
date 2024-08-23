@@ -1,19 +1,18 @@
 'use client'
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image'
+import Link from 'next/link'
 
 interface Props {
   movie: {
-    id: number;
-    title: string;
-    poster_path: string;
-  },
-  width?: number,
+    id: number
+    title: string
+    poster_path: string
+  }
+  width?: number
   height?: number
 }
 
-export default function MovieTile({movie, width, height}: Props) {
-
+export default function MovieTile({ movie, width, height }: Props) {
   if (!movie) {
     return null
   }
@@ -21,8 +20,8 @@ export default function MovieTile({movie, width, height}: Props) {
   const { poster_path, id, title } = movie
 
   return (
-    <Link href={`/movies/${id}`} key={id} className="inline-block mr-3">
-      <div className='rounded-md overflow-hidden border-2 border-stone-800 hover:border-lime-500 transition-all duration-500'>
+    <Link href={`/movies/${id}`} key={id} className="mr-3 inline-block">
+      <div className="overflow-hidden rounded-md border-2 border-stone-800 transition-all duration-500 hover:border-lime-500">
         <Image
           src={`https://image.tmdb.org/t/p/w500${poster_path}`}
           alt={title}

@@ -1,16 +1,16 @@
-'use client';
-import { useCallback, useEffect, useState } from "react";
-import videojs from "video.js";
-import "videojs-youtube";
+'use client'
+import { useCallback, useEffect, useState } from 'react'
+import videojs from 'video.js'
+import 'videojs-youtube'
 
 interface PlayerProps {
-  techOrder: string[];
-  autoplay: boolean;
-  controls: boolean;
+  techOrder: string[]
+  autoplay: boolean
+  controls: boolean
   sources: {
-    src: string;
-    type: string;
-  }[];
+    src: string
+    type: string
+  }[]
 }
 
 /**
@@ -18,22 +18,22 @@ interface PlayerProps {
  * @returns A Video.js video player element.
  */
 const Player = (props: PlayerProps) => {
-  const [videoEl, setVideoEl] = useState<HTMLVideoElement | null>(null);
+  const [videoEl, setVideoEl] = useState<HTMLVideoElement | null>(null)
   const onVideo = useCallback((el: HTMLVideoElement) => {
-    setVideoEl(el);
-  }, []);
+    setVideoEl(el)
+  }, [])
 
   useEffect(() => {
     if (videoEl == null) {
-      return;
+      return
     }
 
-    const player = videojs(videoEl, props);
+    const player = videojs(videoEl, props)
 
     return () => {
-      player.dispose();
-    };
-  }, [props, videoEl]);
+      player.dispose()
+    }
+  }, [props, videoEl])
 
   return (
     <>
@@ -41,7 +41,7 @@ const Player = (props: PlayerProps) => {
         <video ref={onVideo} className="video-js" />
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Player;
+export default Player

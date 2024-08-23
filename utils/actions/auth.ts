@@ -6,28 +6,30 @@ import { headers } from 'next/headers'
 import { revalidatePath } from 'next/cache'
 
 export const signIn = async (formData: FormData) => {
-  const email = formData.get("email") as string;
-  const password = formData.get("password") as string;
-  const supabase = createClient();
+  debugger
+  const email = formData.get('email') as string
+  const password = formData.get('password') as string
+  const supabase = createClient()
 
   const { error } = await supabase.auth.signInWithPassword({
     email,
     password,
-  });
+  })
 
   if (error) {
-    return redirect("/login?message=Could not authenticate user");
+    return redirect('/login?message=Could not authenticate user')
   }
-
- return redirect("?login=true");
-
-};
+console.log('redirecting')
+  revalidatePath('/')
+  return redirect('/')
+}
 
 export const signUp = async (formData: FormData) => {
-  const origin = headers().get("origin");
-  const email = formData.get("email") as string;
-  const password = formData.get("password") as string;
-  const supabase = createClient();
+  console.log('signing up')
+  const origin = headers().get('origin')
+  const email = formData.get('email') as string
+  const password = formData.get('password') as string
+  const supabase = createClient()
 
   const { error } = await supabase.auth.signUp({
     email,
@@ -35,17 +37,17 @@ export const signUp = async (formData: FormData) => {
     options: {
       emailRedirectTo: `${origin}/auth/callback`,
     },
-  });
+  })
 
   if (error) {
-    return redirect("/login?message=Could not authenticate user");
+    return redirect('/login?message=Could not authenticate user')
   }
 
-  return redirect("/login?message=Check email to continue sign in process");
-};
+  return redirect('/login?message=Check email to continue sign in process')
+}
 
 export const signOut = async () => {
-  const supabase = createClient();
-  await supabase.auth.signOut();
-  return redirect("/");
-};
+  const supabase = createClient()
+  await supabase.auth.signOut()
+  return redirect('/')
+}

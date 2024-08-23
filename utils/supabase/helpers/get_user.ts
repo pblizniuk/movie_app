@@ -1,14 +1,12 @@
 'use server'
-import { createClient } from "@/utils/supabase/server";
-import { redirect } from "next/navigation";
+import { createClient } from '@/utils/supabase/server'
 
 export async function getUser() {
-  const supabase = createClient();
+  const supabase = createClient()
   const {
     data: { user },
-  } = await supabase.auth.getUser();
+  } = await supabase.auth.getUser()
   const { id } = Object(user)
-  console.log(id)
 
   return id
 }

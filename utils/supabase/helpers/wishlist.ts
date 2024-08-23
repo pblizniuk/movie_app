@@ -1,15 +1,14 @@
 'use server'
-import { createClient } from "@/utils/supabase/server";
-import { getUser } from "@/utils/supabase/helpers/get_user";
+import { createClient } from '@/utils/supabase/server'
+import { getUser } from '@/utils/supabase/helpers/get_user'
 
 export async function getWishlistTitles() {
-
   const id = await getUser()
-  if(!id) {
+  if (!id) {
     return null
   }
 
-  const supabase = createClient();
+  const supabase = createClient()
   const { data, error } = await supabase
     .from('wishlist')
     .select()
@@ -22,18 +21,19 @@ export async function getWishlistTitles() {
 
   return {
     data,
-    error
+    error,
   }
 }
 
 export async function checkIfMovieIsInWishlist(movie_id: number) {
   const data = await getWishlistTitles()
 
-  if(!data) {
+  if (!data) {
     return false
   }
   const wishlistTitles = await getWishlistTitles()
-  const isInWishlist = wishlistTitles?.data?.some((movie) => movie.movie_id === movie_id)
+  const isInWishlist = wishlistTitles?.data?.some(
+    (movie) => movie.movie_id === movie_id,
+  )
   return isInWishlist
-
 }

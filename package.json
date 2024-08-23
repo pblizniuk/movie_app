@@ -1,8 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
+    "dev": "next dev",
+    "prettier": "prettier --write --ignore-unknown .",
     "start": "next start"
   },
   "dependencies": {

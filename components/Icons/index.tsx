@@ -14,14 +14,14 @@ type IconProps = {
 
 const Icon = (props: IconProps) => {
   const { width, height, size, name } = props
-  const sizing = size ? {width: size, height: size} : {width, height}
+  const sizing = size ? { width: size, height: size } : { width, height }
 
   return (
     <>
-      {name === 'movies' && movies({ ...props, ...sizing }, )}
-      {name === 'tv_shows' && tv_shows({ ...props, ...sizing }, )}
-      {name === 'wishlist' && wishlist({ ...props, ...sizing }, )}
-      {name === 'cross' && cross({ ...props, ...sizing }, )}
+      {name === 'movies' && movies({ ...props, ...sizing })}
+      {name === 'tv_shows' && tv_shows({ ...props, ...sizing })}
+      {name === 'wishlist' && wishlist({ ...props, ...sizing })}
+      {name === 'cross' && cross({ ...props, ...sizing })}
     </>
   )
 }

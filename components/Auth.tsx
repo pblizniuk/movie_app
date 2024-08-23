@@ -1,27 +1,28 @@
-import { SubmitButton } from "./SubmitButton";
-import { signIn, signUp } from "@/utils/actions/auth";
+import { SubmitButton } from './SubmitButton'
+import { signIn, signUp } from '@/utils/actions/auth'
 
 export default function Login({
   searchParams,
-  onHandleSubmit
+  onHandleSubmit,
+  isDialog = false,
 }: {
-  searchParams: any;
+  searchParams: any
   onHandleSubmit: () => void
+  isDialog?: boolean
 }) {
-
   const handleSubmit = async (formData: FormData) => {
-    onHandleSubmit();
-    await signIn(formData);
-  };
+    await onHandleSubmit()
+    await signIn(formData)
+  }
 
   return (
-    <div className="flex-1 flex flex-col w-full sm:max-w-md justify-center gap-2">
-      <form className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground">
+    <div className="flex w-full flex-1 flex-col justify-center gap-2 sm:max-w-md">
+      <form className="flex w-full flex-1 flex-col justify-center gap-2 text-foreground">
         <label className="text-md" htmlFor="email">
           Email
         </label>
         <input
-          className="rounded-md px-4 py-2 bg-inherit border mb-6"
+          className="mb-6 rounded-md border bg-inherit px-4 py-2"
           name="email"
           placeholder="you@example.com"
           required
@@ -30,32 +31,32 @@ export default function Login({
           Password
         </label>
         <input
-          className="rounded-md px-4 py-2 bg-inherit border mb-6"
+          className="mb-6 rounded-md border bg-inherit px-4 py-2"
           type="password"
           name="password"
           placeholder="••••••••"
           required
         />
         <SubmitButton
-          formAction={handleSubmit}
-          className="font-semibold inline-block rounded bg-lime-500 px-6 py-2 leading-normal text-white shadow-light-3 transition duration-150 ease-in-out hover:bg-lime-600 hover:shadow-light-2 focus:bg-lime-600 focus:shadow-light-2 focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-light-2 motion-reduce:transition-none"
+          formAction={isDialog ? handleSubmit : signIn}
+          className="shadow-light-3 hover:shadow-light-2 focus:shadow-light-2 active:shadow-light-2 inline-block rounded bg-lime-500 px-6 py-2 font-semibold leading-normal text-white transition duration-150 ease-in-out hover:bg-lime-600 focus:bg-lime-600 focus:outline-none focus:ring-0 active:bg-lime-600 motion-reduce:transition-none"
           pendingText="Signing In..."
         >
           Sign In
         </SubmitButton>
         <SubmitButton
           formAction={signUp}
-          className="border border-lime-500 rounded-md px-4 py-2 text-foreground mb-2 transition duration-150 ease-in-out hover:bg-lime-600/5 hover:shadow-light-2 focus:bg-lime-600/5 focus:shadow-light-2 focus:outline-none focus:ring-0 active:bg-lime-600/5 active:shadow-light-2 motion-reduce:transition-none"
+          className="hover:shadow-light-2 focus:shadow-light-2 active:shadow-light-2 mb-2 rounded-md border border-lime-500 px-4 py-2 text-foreground transition duration-150 ease-in-out hover:bg-lime-600/5 focus:bg-lime-600/5 focus:outline-none focus:ring-0 active:bg-lime-600/5 motion-reduce:transition-none"
           pendingText="Signing Up..."
         >
           Sign Up
         </SubmitButton>
         {searchParams?.message && (
-          <p className="mt-4 p-4 bg-foreground/10 text-foreground text-center">
+          <p className="mt-4 bg-foreground/10 p-4 text-center text-foreground">
             {searchParams.message}
           </p>
         )}
       </form>
     </div>
-  );
+  )
 }
