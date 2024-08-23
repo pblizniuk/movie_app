@@ -19,6 +19,13 @@ const config: Config =  {
           "background-hover": "hsl(var(--btn-background-hover))",
         },
       },
+      keyframes: {
+        shimmer: {
+          '100%': {
+            transform: 'translateX(100%)',
+          },
+        },
+      },
     },
   },
   plugins: [],

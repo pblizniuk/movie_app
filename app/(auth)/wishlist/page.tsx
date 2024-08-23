@@ -2,6 +2,7 @@ import WishlistTile from "@/components/WishlistTIle";
 import { getWishlistTitles } from "@/utils/supabase/helpers/get_wishlist_titles";
 import { getUser } from "@/utils/supabase/helpers/get_user";
 import { deleteFromWishlist } from "@/utils/actions/wishlist";
+import Icon from "@/components/Icons";
 
 type Movie = {
   movie_id: number
@@ -21,7 +22,18 @@ export default async function ProtectedPage() {
             <WishlistTile key={movie.movie_id} movie_id={movie.movie_id} />
             <input type="hidden" name="movie_id" value={movie.movie_id} />
             <input type="hidden" name="user_id" value={id} />
-            <button type="submit" formAction={deleteFromWishlist}>X</button>
+            <button type="submit" formAction={deleteFromWishlist}>
+            <span className='absolute -top-3 right-1'>
+              <span className="block bg-lime-500 hover:bg-lime-600 px-1 py-1 rounded-full transition-colors">
+              <Icon
+                className='h-6 w-6 rotate-45 text-white'
+                name='cross'
+                height='30'
+                width='30'
+              />
+              </span>
+            </span>
+            </button>
           </form>
         ))}
       </div>

@@ -1,11 +1,10 @@
 import Link from "next/link";
-
 import Auth from "@/components/Auth";
 
 export default function Modal({
   searchParams,
 }: {
-  searchParams: { message: string };
+  searchParams: any;
 }) {
 
   return (

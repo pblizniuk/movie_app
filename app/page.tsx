@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import getData from "@/utils/get_data";
 import Reel from "@/components/Reel";
 import { Suspense } from "react";
+import { ReelSkeleton } from "@/components/Skeletons";
 
 async function PopularMovies() {
   const data = await getData('movie/popular?language=en-US&page=1')
@@ -65,16 +66,16 @@ export default async function HomePage() {
     <div>
       <Header data={popularMovies?.results} />
       <main className="w-full max-w-[2000px] mx-auto p-6">
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<ReelSkeleton />}>
           <PopularMovies />
         </Suspense>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<ReelSkeleton />}>
           <TopRatedMovies />
         </Suspense>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<ReelSkeleton />}>
           <NowPlayingMovies />
         </Suspense>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<ReelSkeleton />}>
           <UpcomingMovies />
         </Suspense>
       </main>

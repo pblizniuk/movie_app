@@ -1,9 +1,5 @@
-"use client"; // <===== REQUIRED
-
+"use client";
 import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-
 // Swiper components, modules and styles
 import { Keyboard, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -44,15 +40,20 @@ const Reel: React.FC<ReelProps> = ({ data }) => {
         slidesPerView={2.3}
         grabCursor={true}
         watchSlidesProgress={true}
+        slidesPerGroup={2}
+
         breakpoints={{
           640: {
-            slidesPerView: 4.2
+            slidesPerView: 4.2,
+            slidesPerGroup: 4
           },
           1024: {
-            slidesPerView: 6.5
+            slidesPerView: 6.5,
+            slidesPerGroup: 6
           },
           1440: {
-            slidesPerView: 8
+            slidesPerView: 8,
+            slidesPerGroup: 8
           },
         }}
       >

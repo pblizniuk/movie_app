@@ -33,7 +33,9 @@ const HeroReel: React.FC<HeroReelProps> = ({ data }) => {
     if (showcase?.length < 2 || showcase === undefined) {
       return null
     } else {
+      // @ts-ignore
       progressCircle?.current?.style.setProperty('--progress', 1 - progress);
+      // @ts-ignore
       progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
     }
   };
@@ -44,6 +46,7 @@ const HeroReel: React.FC<HeroReelProps> = ({ data }) => {
         modules={[Autoplay, Navigation, Pagination]}
         slidesPerView={1}
         loop={true}
+        speed={1000}
         autoplay={{
           delay: 8000,
           pauseOnMouseEnter: true,
@@ -73,6 +76,7 @@ const HeroReel: React.FC<HeroReelProps> = ({ data }) => {
                     <h3 className="text-6xl font-bold mb-8">{title}</h3>
                     <p className="text-xl mb-8">{overview}</p>
                     <Buttons id={id}>
+                      {/* TODO: need to figure out how to get wishlist status on initial render, as WishListButton is a server component passed to a client component */}
                       {/* <WishlistButton movie_id={id} /> */}
                     </Buttons>
                   </div>

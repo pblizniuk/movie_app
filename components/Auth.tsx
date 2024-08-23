@@ -5,7 +5,7 @@ import { signIn, signUp } from "@/utils/actions/auth";
 export default function Login({
   searchParams,
 }: {
-  searchParams: { message: string };
+  searchParams: { message?: string };
 }) {
 
   return (

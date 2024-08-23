@@ -11,7 +11,14 @@ type Movie = {
     overview: string;
     genres: { id: number; name: string }[];
     release_date: string;
-    release_dates: { results: { iso_3166_1: string, release_dates: { certification: string } }[] };
+    release_dates: {
+      results: {
+        iso_3166_1: string,
+        release_dates: {
+          certification: string
+        }[]
+      }[]
+    };
     runtime: number;
     vote_average: number;
     vote_count: number;
@@ -24,9 +31,7 @@ const HeroReel = async ({ data }: Movie) => {
   const { backdrop_path, id, title, overview, genres, release_date, release_dates, videos } = data
   const { results = [] } = release_dates
   const result = results.find(result => result.iso_3166_1 === "US")
-console.log(data)
-  const parentRating = result?.release_dates[0].certification
-
+  const parentRating = result && result?.release_dates[0].certification
   const trailerKey = videos?.results[0]?.key
 
   return (
