@@ -58,7 +58,7 @@ const Reel: React.FC<ReelProps> = ({ data }) => {
       >
         {data.map(movie => (
             <SwiperSlide key={movie.id} className="flex-auto justify-center items-center overflow-hidden max-w-[250px]">
-              <MovieTile movie={movie} />
+              <MovieTile movie={movie} width={228} height={342} />
             </SwiperSlide>
           ))}
       </Swiper>

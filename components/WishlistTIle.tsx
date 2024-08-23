@@ -9,7 +9,7 @@ export default async function WishlistTile(props: { movie_id: number }) {
 
   return (
     <form className="relative">
-      <MovieTile movie={movieDetails} />
+      <MovieTile movie={movieDetails} width={375} height={582} />
     </form>
   )
 }

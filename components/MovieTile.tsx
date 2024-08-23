@@ -7,10 +7,12 @@ interface Props {
     id: number;
     title: string;
     poster_path: string;
-  }
+  },
+  width?: number,
+  height?: number
 }
 
-export default function MovieTile({movie}: Props) {
+export default function MovieTile({movie, width, height}: Props) {
 
   if (!movie) {
     return null
@@ -24,8 +26,10 @@ export default function MovieTile({movie}: Props) {
         <Image
           src={`https://image.tmdb.org/t/p/w500${poster_path}`}
           alt={title}
-          width={375}
-          height={582}
+          // width={375}
+          // height={582}
+          width={width}
+          height={height}
           loading="lazy"
         />
       </div>

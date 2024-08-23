@@ -32,7 +32,7 @@ export default function RootLayout({
     <html lang="en" className={`${outfit.className} ${rockSalt.variable} antialiased max-w-full overflow-x-hidden`}>
       <body className="bg-stone-200 dark:bg-stone-900 text-foreground grid grid-rows-[auto_1fr_auto] grid-cols-1 overflow-x-clip min-h-screen relative">
         <Nav />
-          {children}
+        {children}
         <footer className="w-full border-t border-t-foreground/10 p-8 mt-16 flex justify-center text-center text-xs">
           <p>&copy; {new Date().getFullYear()} <span className={`font-rock-salt pl-3 text-xs font-extrabold text-lime-500`}>Screen<span className="text-foreground/80">Bits </span></span>Movie Trailer App by Paul Blizniuk</p>
         </footer>
