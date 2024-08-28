@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Player from '@/components/Player/Player'
+import Icon from './Icons'
 export default function WatchTrailerButton({
   movie_id,
   trailerKey,
@@ -42,21 +43,25 @@ export default function WatchTrailerButton({
         Watch Trailer
       </button>
       {dialogOpen && (
-        <div className="fixed inset-0 z-[99999] bg-black bg-opacity-50 transition-opacity">
+        <div className="fixed inset-0 z-[99999] bg-black bg-opacity-80 transition-opacity">
           <div>
             <button
               type="button"
               onClick={() => setDialogOpen(false)}
               className="absolute right-0 top-0 z-[99999] cursor-default"
             >
-              Close Dialog
+              <Icon
+                className="h-6 w-6 rotate-45 text-white cursor-pointer m-6"
+                name="cross"
+                size="40"
+              />
             </button>
           </div>
           <div className="fixed inset-0 flex items-center justify-center p-4">
             <iframe
               src={`https://www.youtube.com/embed/${trailerKey}`}
               frameborder="0"
-              allowfullscreen
+              allowFullScreen
               className="h-[90vh] w-[90vw]"
             />
           </div>

@@ -2,6 +2,7 @@ import movies from './movies'
 import tv_shows from './tv_shows'
 import wishlist from './wishlist'
 import cross from './cross'
+import user from './user'
 type IconProps = {
   name: string
   color?: string
@@ -10,6 +11,7 @@ type IconProps = {
   width?: string
   height?: string
   strokeWidth?: string
+  stroke?: string
 }
 
 const Icon = (props: IconProps) => {
@@ -22,6 +24,7 @@ const Icon = (props: IconProps) => {
       {name === 'tv_shows' && tv_shows({ ...props, ...sizing })}
       {name === 'wishlist' && wishlist({ ...props, ...sizing })}
       {name === 'cross' && cross({ ...props, ...sizing })}
+      {name === 'user' && user({ ...props, ...sizing })}
     </>
   )
 }

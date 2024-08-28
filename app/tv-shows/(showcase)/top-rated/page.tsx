@@ -10,6 +10,7 @@ export default async function Page() {
         title="Top Rated TV Shows"
         data={data?.results}
         pagingUrl="tv/top_rated?language=en-US&page="
+        isTV
       />
     </main>
   )

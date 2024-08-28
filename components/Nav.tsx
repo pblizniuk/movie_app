@@ -1,6 +1,7 @@
 import AuthButton from '@/components/AuthButton'
 import Link from 'next/link'
 import Icon from './Icons'
+import Search from './Search'
 
 export default function Nav() {
   return (
@@ -17,14 +18,14 @@ export default function Nav() {
               <span className="flex items-center">
                 <Icon
                   name="movies"
-                  height="20"
-                  width="auto"
+                  size="20"
                   className="fill-white"
                 />
                 <span className="ml-1 hidden lg:block">Movies</span>
               </span>
               <div className="absolute hidden rounded-md bg-stone-600/90 px-3 py-2 text-foreground/80 group-hover:block">
                 <div className="grid min-w-48 grid-rows-3 gap-2">
+                  <Link href="/movies/showcase">All Movies</Link>
                   <Link href="/movies/popular">Popular Movies</Link>
                   <Link href="/movies/top-rated">Top Rated</Link>
                   <Link href="/movies/now-in-theaters">Now in Theaters</Link>
@@ -32,13 +33,11 @@ export default function Nav() {
                 </div>
               </div>
             </span>
-            {/* TODO: TV shows aren't yet completed, need to dynamically set type */}
-            {/* <span className='group relative'>
+            <span className='group relative'>
               <span className='flex items-center'>
                 <Icon
                   name='tv_shows'
-                  height='20'
-                  width='auto'
+                  size='20'
                   color='white'
                 />
                 <span className="ml-1 hidden lg:block whitespace-nowrap">TV Shows</span>
@@ -49,13 +48,12 @@ export default function Nav() {
                   <Link href="/tv-shows/top-rated">Top Rated</Link>
                 </div>
               </div>
-            </span> */}
+            </span>
             <Link href="/wishlist">
               <span className="flex items-center">
                 <Icon
                   name="wishlist"
-                  height="20"
-                  width="auto"
+                  size="20"
                   className="fill-white"
                 />
                 <span className="ml-1 hidden whitespace-nowrap lg:block">
@@ -64,7 +62,8 @@ export default function Nav() {
               </span>
             </Link>
           </nav>
-          <div>
+          <div className="flex items-center gap-10">
+            <Search showDropdown />
             <AuthButton />
           </div>
         </div>

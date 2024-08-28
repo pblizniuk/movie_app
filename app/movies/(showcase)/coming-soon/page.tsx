@@ -8,7 +8,7 @@ export default async function Page() {
       <MovieGrid
         title="Coming Soon"
         data={movies?.results}
-        pagingUrl="movie/upcoming?language=en-US&page=1"
+        pagingUrl="movie/upcoming?language=en-US&page="
       />
     </main>
   )

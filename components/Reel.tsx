@@ -8,10 +8,12 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import MovieTile from './MovieTile'
+import Link from 'next/link'
 
 interface Slide {
   id: number
-  title: string
+  title?: string
+  name?: string
   tagline: string
   backdrop_path: string
   poster_path: string
@@ -28,10 +30,22 @@ interface ButtonProps {
 
 interface ReelProps {
   data: Slide[]
+  title: string
+  isTV?: boolean
+  link?: string
 }
 
-const Reel: React.FC<ReelProps> = ({ data }) => {
+const Reel: React.FC<ReelProps> = ({ data, isTV = false, title, link }) => {
   return (
+    <>
+    <div className='flex justify-between'>
+    {title && (
+      <h3 className="mb-3 text-3xl font-bold">{title}</h3>
+    )}
+    {link && (
+      <Link href={link} className="text-md font-bold mr-4">View more</Link>
+    )}
+    </div>
     <section className="reel">
       <Swiper
         navigation
@@ -55,16 +69,17 @@ const Reel: React.FC<ReelProps> = ({ data }) => {
           },
         }}
       >
-        {data.map((movie) => (
+        {data?.map(item => (
           <SwiperSlide
-            key={movie.id}
+            key={item.id}
             className="max-w-[250px] flex-auto items-center justify-center overflow-hidden"
           >
-            <MovieTile movie={movie} width={228} height={342} />
+            <MovieTile item={item} width={228} height={342} isTV={isTV} />
           </SwiperSlide>
         ))}
       </Swiper>
     </section>
+    </>
   )
 }
 

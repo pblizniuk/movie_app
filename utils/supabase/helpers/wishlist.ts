@@ -13,6 +13,7 @@ export async function getWishlistTitles() {
     .from('wishlist')
     .select()
     .eq('user_id', id)
+    .order('date_added', { ascending: false })
 
   if (error) {
     console.log(error)
@@ -33,7 +34,7 @@ export async function checkIfMovieIsInWishlist(movie_id: number) {
   }
   const wishlistTitles = await getWishlistTitles()
   const isInWishlist = wishlistTitles?.data?.some(
-    (movie) => movie.movie_id === movie_id,
+    (movie: { movie_id: number } ) => movie.movie_id === movie_id,
   )
   return isInWishlist
 }

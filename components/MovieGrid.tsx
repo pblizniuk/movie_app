@@ -1,19 +1,21 @@
 import MovieTile from './MovieTile'
+import { MovieGridTypes } from '@/utils/types'
+import LoadMore from './LoadMore'
 
-type MovieGridProps = {
-  title: string
-  data: []
-  pagingUrl: string // will use for fetching additional pages
-}
-export default async function MovieGrid({ title, data }: MovieGridProps) {
+export default async function MovieGrid({ title, data, isTV = false, pagingUrl }: MovieGridTypes) {
+
   return (
     <div>
       <h3 className="mb-12 text-5xl font-semibold lg:mb-20">{title}</h3>
-      <div className="grid grid-cols-2 gap-y-6 md:grid-cols-3 lg:grid-cols-5">
-        {data.map((movie) => (
-          <MovieTile key={movie.id} movie={movie} width={375} height={582} />
-        ))}
+      <div className="grid grid-cols-2 gap-y-6 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6">
+        {data.map((item) => {
+          if (!item?.poster_path) return
+          return (
+            <MovieTile key={item?.id} item={item} width={375} height={582} isTV={isTV} />
+          )
+        })}
       </div>
+      <LoadMore pagingUrl={pagingUrl} isTV={isTV} />
     </div>
   )
 }

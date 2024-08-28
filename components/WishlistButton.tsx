@@ -6,13 +6,14 @@ import { getUser } from '@/utils/supabase/helpers/get_user'
 
 export default async function WishlistButton({
   movie_id,
+  isTV
 }: {
   movie_id: number
+  isTV?: boolean
 }) {
   const id = await getUser()
-console.log(id)
   const isInWishlist = await checkIfMovieIsInWishlist(movie_id)
-
+console.log(isTV, 'isTV')
   if (!id) {
     return null
   }
@@ -20,9 +21,7 @@ console.log(id)
   return (
     <form>
       <input type="hidden" name="movie_id" value={movie_id} />
-
-      {/* TODO: Add type dynamically for tv shows */}
-      <input type="hidden" name="type" value="movie" />
+      <input type="hidden" name="type" value={isTV ? 'tv_show' : 'movie'} />
 
       <SubmitButton
         formAction={isInWishlist ? deleteFromWishlist : addToWishlist}
@@ -34,8 +33,7 @@ console.log(id)
         <Icon
           className={`me-1 h-4 w-4 ${isInWishlist && 'rotate-45'} text-lime-500`}
           name="cross"
-          height="20"
-          width="20"
+          size="20"
         />
         {isInWishlist ? 'Remove from wishlist' : 'Add to wishlist'}
       </SubmitButton>

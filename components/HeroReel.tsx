@@ -26,7 +26,7 @@ interface HeroReelProps {
 }
 
 const HeroReel: React.FC<HeroReelProps> = ({ data }) => {
-  const showcase = data?.slice(1, 4)
+  const showcase = data?.slice(0, 5)
   const progressCircle = useRef(null)
   const progressContent = useRef(null)
   const onAutoplayTimeLeft = (s: number, time: number, progress: number) => {
@@ -41,7 +41,7 @@ const HeroReel: React.FC<HeroReelProps> = ({ data }) => {
   }
 
   return (
-    <section className="mb-16">
+    <section>
       <Swiper
         modules={[Autoplay, Navigation, Pagination]}
         slidesPerView={1}
@@ -68,6 +68,7 @@ const HeroReel: React.FC<HeroReelProps> = ({ data }) => {
                     height={1080}
                     quality={100}
                     className="h-full w-full object-cover object-top transition-all delay-150 duration-[8000ms] group-[.swiper-slide-active]:scale-110"
+                    priority={true}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-stone-900 from-0%"></div>
                 </div>

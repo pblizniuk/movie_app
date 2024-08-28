@@ -14,8 +14,7 @@ export default async function Movie({ params: { id } }: any) {
     <div>
       <HeroDetail data={movieDetails} />
       <main className="mx-auto w-full max-w-[2000px] px-6">
-        <h3 className="mb-4 text-2xl font-bold">Similar Movies</h3>
-        <Reel data={similarMovies?.results} />
+        <Reel data={similarMovies?.results} title="Similar Movies" />
       </main>
     </div>
   )

@@ -13,18 +13,18 @@ export default async function Login({
     <main className="m-auto w-full max-w-[600px] px-6">
       {!id ? (
         <>
-        <h3 className="mb-4 text-5xl font-semibold">
-        Welcome! Sign in or create your free account.
-      </h3>
-      <Auth searchParams={searchParams} />
+          <h3 className="mb-4 text-5xl font-semibold">
+            Welcome! Sign in or create your free account.
+          </h3>
+          <Auth searchParams={searchParams} />
         </>
       ) : (
         <>
-        <h3 className="mb-4 text-5xl font-semibold">
-        You're already logged in. Not you? Log out..
-      </h3>
-      <AuthButton />
-      </>
+          <h3 className="mb-4 text-5xl font-semibold">
+            You're already logged in. Not you? Log out..
+          </h3>
+          <AuthButton />
+        </>
       )}
     </main>
   )

@@ -1,12 +1,17 @@
 import { SubmitButton } from './SubmitButton'
 import { signIn, signUp } from '@/utils/actions/auth'
 
+type SearchParams = {
+  message?: string
+  onHandleSubmit?: () => void
+  isDialog?: boolean
+}
 export default function Login({
   searchParams,
   onHandleSubmit,
   isDialog = false,
 }: {
-  searchParams: any
+  searchParams: SearchParams
   onHandleSubmit: () => void
   isDialog?: boolean
 }) {

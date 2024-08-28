@@ -36,7 +36,7 @@ export default function RootLayout({
       <body className="relative grid min-h-screen grid-cols-1 grid-rows-[auto_1fr_auto] overflow-x-clip bg-stone-200 text-foreground dark:bg-stone-900">
         <Nav />
         {children}
-        <footer className="mt-16 flex w-full justify-center border-t border-t-foreground/10 p-8 text-center text-xs">
+        <footer className="mt-16 flex w-full justify-center border-t border-t-foreground/10 p-8 text-center text-sm">
           <p>
             &copy; {new Date().getFullYear()}{' '}
             <span
@@ -44,7 +44,7 @@ export default function RootLayout({
             >
               Screen<span className="text-foreground/80">Bits </span>
             </span>
-            Movie Trailer App by Paul Blizniuk
+            Movie Showcase App by Paul Blizniuk
           </p>
         </footer>
         {modal}

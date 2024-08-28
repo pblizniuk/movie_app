@@ -10,6 +10,7 @@ export default async function Page() {
         title="Popular TV Shows"
         data={data?.results}
         pagingUrl="movie/upcoming?language=en-US&page=1"
+        isTV
       />
     </main>
   )
