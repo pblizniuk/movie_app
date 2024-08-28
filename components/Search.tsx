@@ -31,7 +31,7 @@ export default function Search({
     return () => {
       window.removeEventListener('mousedown', handleOutSideClick)
     }
-  }, [ref])
+  }, [ref, searchParams])
 
   const handleOnChange = (term: string) => {
     const params = new URLSearchParams(searchParams)

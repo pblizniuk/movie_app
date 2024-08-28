@@ -5,9 +5,7 @@ import Link from 'next/link'
 import { useRef } from 'react'
 
 export default function SearchResultsDropdown({ query }: { query: string }) {
-  if (!query) return null
   const [searchResults, setSearchResults] = useState({ results: [] })
-
   const dropdown = useRef(null)
 
   useEffect(() => {
@@ -20,6 +18,8 @@ export default function SearchResultsDropdown({ query }: { query: string }) {
     }
     handleResults()
   }, [query, dropdown])
+
+  if (!query) return null
 
   return (
     <div

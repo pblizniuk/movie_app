@@ -7,10 +7,6 @@ export default function WatchTrailerButton({
   movie_id: number
   trailerKey: string
 }) {
-  if (!trailerKey) {
-    return null
-  }
-
   const [dialogOpen, setDialogOpen] = useState(false)
   const videoJsOptions = {
     techOrder: ['youtube'],
@@ -29,6 +25,10 @@ export default function WatchTrailerButton({
     videoJsOptions.autoplay = true
     videoJsOptions.controls = true
     setDialogOpen(true)
+  }
+
+  if (!trailerKey) {
+    return null
   }
 
   return (

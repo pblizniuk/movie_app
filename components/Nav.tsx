@@ -1,7 +1,10 @@
+import dynamic from 'next/dynamic'
 import AuthButton from '@/components/AuthButton'
 import Link from 'next/link'
 import Icon from './Icons'
-import Search from './Search'
+// import Search from './Search'
+
+const Search = dynamic(() => import('./Search'), { ssr: false })
 
 export default function Nav() {
   return (

@@ -21,7 +21,7 @@ export default async function Login({
       ) : (
         <>
           <h3 className="mb-4 text-5xl font-semibold">
-            You're already logged in. Not you? Log out..
+            You are already logged in. Not you? Log out..
           </h3>
           <AuthButton />
         </>
