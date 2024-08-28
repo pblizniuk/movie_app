@@ -6,7 +6,7 @@ import { useRef } from 'react'
 
 export default function SearchResultsDropdown({ query }: { query: string }) {
   if (!query) return null
-  const [searchResults, setSearchResults] = useState(false)
+  const [searchResults, setSearchResults] = useState({ results: [] })
 
   const dropdown = useRef(null)
 
@@ -19,45 +19,39 @@ export default function SearchResultsDropdown({ query }: { query: string }) {
       setSearchResults(data)
     }
     handleResults()
-
-    // const handleOutSideClick = (e) => {
-    //   if (!dropdown.current?.contains(e.target)) {
-    //     setSearchResults(false)
-    //   }
-    // };
-
-    // window.addEventListener("mousedown", handleOutSideClick);
-
-    // return () => {
-    //   window.removeEventListener("mousedown", handleOutSideClick);
-    // };
-
   }, [query, dropdown])
 
   return (
     <div
       ref={dropdown}
       className="results absolute right-0 max-h-[80vh] min-w-[300px] overflow-y-scroll rounded-md bg-stone-800 p-5 lg:min-w-[500px]"
-      >
-      {searchResults?.results?.map((result) => {
-        const { media_type, name, title, id } = result
-        return (
-          <span key={id}>
-            <Link
-              href={`/${media_type === 'movie' ? 'movies' : 'tv-shows'}/${id}`}
-              key={id}
-              className="mb-2 block rounded-md p-1 hover:bg-stone-900"
-            >
-              <h3 className="text-xl font-normal">{title || name}</h3>
-              <p className="text-gray-400">
-                {media_type === 'movie' ? 'Movie' : 'TV Show'}
-              </p>
-            </Link>
+    >
+      {searchResults?.results?.map(
+        (result: {
+          media_type: string
+          name: string
+          title: string
+          id: number
+        }) => {
+          const { media_type, name, title, id } = result
+          return (
+            <span key={id}>
+              <Link
+                href={`/${media_type === 'movie' ? 'movies' : 'tv-shows'}/${id}`}
+                key={id}
+                className="mb-2 block rounded-md p-1 hover:bg-stone-900"
+              >
+                <h3 className="text-xl font-normal">{title || name}</h3>
+                <p className="text-gray-400">
+                  {media_type === 'movie' ? 'Movie' : 'TV Show'}
+                </p>
+              </Link>
 
-            <div className="my-2 w-full bg-gradient-to-r from-transparent via-foreground/10 to-transparent p-[1px]" />
-          </span>
-        )
-      })}
+              <div className="my-2 w-full bg-gradient-to-r from-transparent via-foreground/10 to-transparent p-[1px]" />
+            </span>
+          )
+        },
+      )}
     </div>
   )
 }

@@ -15,11 +15,11 @@ export default function HeroImage({
       width={1280}
       height={1080}
       quality={100}
-      className="h-full w-full [&.active]:scale-110 object-cover object-top transition-all delay-150 duration-[8000ms]"
+      className="h-full w-full object-cover object-top transition-all delay-150 duration-[8000ms] [&.active]:scale-110"
       priority={true}
       placeholder="blur"
       blurDataURL={`https://image.tmdb.org/t/p/w1280${backdrop_path}&include_adult=false`}
-      onLoad={(e) => e.currentTarget.className += " active"}
+      onLoad={(e) => (e.currentTarget.className += ' active')}
     />
   )
 }

@@ -4,10 +4,7 @@ import { getUser } from '@/utils/supabase/helpers/get_user'
 import { deleteFromWishlist } from '@/utils/actions/wishlist'
 import Icon from '@/components/Icons'
 
-type Movie = {
-  movie_id: number
-  type: string
-}
+type Bundle = { movie_id: number; type: string }[]
 
 export default async function Wishlist() {
   const id = await getUser()
@@ -20,11 +17,11 @@ export default async function Wishlist() {
     (item: { type: string }) => item.type === 'tv_show',
   )
 
-  const wishlistBundle = (bundle: string[]) => {
+  const wishlistBundle = (bundle: Bundle) => {
     return (
       <>
         <div className="xs:grid-cols-3 grid grid-cols-2 gap-y-6 md:grid-cols-4 lg:grid-cols-8">
-          {bundle?.map((movie: Movie) => {
+          {bundle?.map((movie: { movie_id: number; type: string }) => {
             const { movie_id, type } = movie
 
             return (

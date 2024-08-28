@@ -9,13 +9,19 @@ type MovieTileProps = {
     title?: string
     name?: string
     poster_path: string
+    alt?: string
   }
   width?: number
   height?: number
   isTV?: boolean
 }
 
-export default function MovieTile({ item, width, height, isTV = false }: MovieTileProps) {
+export default function MovieTile({
+  item,
+  width,
+  height,
+  isTV = false,
+}: MovieTileProps) {
   if (!item) {
     return null
   }
@@ -23,11 +29,15 @@ export default function MovieTile({ item, width, height, isTV = false }: MovieTi
   const { poster_path, id, title, name } = item
 
   return (
-    <Link href={isTV ? `/tv-shows/${id}` : `/movies/${id}`} key={id} className="mr-3 inline-block">
+    <Link
+      href={isTV ? `/tv-shows/${id}` : `/movies/${id}`}
+      key={id}
+      className="mr-3 inline-block"
+    >
       <div className="overflow-hidden rounded-md border-2 border-stone-800 transition-all duration-500 hover:border-lime-500">
         <Image
           src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-          alt={isTV ? name : title}
+          alt={`image of ${isTV ? name : title}`}
           width={width}
           height={height}
           loading="lazy"

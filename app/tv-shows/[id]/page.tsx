@@ -86,7 +86,7 @@ export default async function TVShow({ params: { id } }: any) {
     <div>
       <HeroTVDetail data={movieDetails} isTV />
       <main className="mx-auto w-full max-w-[2000px] px-6">
-        <Reel data={similarTV?.results} isTV title='TV Shows You May Like' />
+        <Reel data={similarTV?.results} isTV title="TV Shows You May Like" />
       </main>
     </div>
   )

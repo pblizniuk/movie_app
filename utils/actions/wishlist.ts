@@ -23,7 +23,6 @@ export async function deleteFromWishlist(formData: FormData) {
 }
 
 export async function addToWishlist(formData: FormData) {
-  console.log(formData)
   const supabase = createClient()
   const {
     data: { user },
@@ -50,12 +49,10 @@ export async function addToWishlist(formData: FormData) {
   return revalidatePath('/wishlist')
 }
 
-
 // 'use server'
 // import { createClient } from '@/utils/supabase/server'
 // import { revalidatePath } from 'next/cache'
 // import { redirect } from 'next/navigation'
-
 
 // const authenticatedAction = (formData: FormData) => async (actionFunction: (supabase: any, user: any, formData: FormData ) => Promise<void> ) => {
 //   const supabase = createClient()

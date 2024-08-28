@@ -3,30 +3,30 @@ const shimmer =
 
 export function ReelSkeleton() {
   return (
-    <div className="grid min-h-48 grid-cols-2 gap-2 md:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8">
+    <div className="mr-3 grid min-h-48 grid-cols-2 gap-3 md:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8">
       <div
-        className={`${shimmer} relative mr-2 h-[300px] w-full rounded-md bg-stone-800`}
+        className={`${shimmer} relative h-[260px] w-full overflow-hidden rounded-md bg-stone-800`}
       />
       <div
-        className={`${shimmer} relative mr-2 h-[300px] w-full rounded-md bg-stone-800`}
+        className={`${shimmer} relative h-[260px] w-full overflow-hidden rounded-md bg-stone-800`}
       />
       <div
-        className={`${shimmer} relative mr-2 hidden h-[300px] w-full rounded-md bg-stone-800 md:block`}
+        className={`${shimmer} relative hidden h-[260px] w-full overflow-hidden rounded-md bg-stone-800 md:block`}
       />
       <div
-        className={`${shimmer} relative mr-2 hidden h-[300px] w-full rounded-md bg-stone-800 md:block`}
+        className={`${shimmer} relative hidden h-[260px] w-full overflow-hidden rounded-md bg-stone-800 md:block`}
       />
       <div
-        className={`${shimmer} relative mr-2 hidden h-[300px] w-full rounded-md bg-stone-800 xl:block`}
+        className={`${shimmer} relative hidden h-[260px] w-full overflow-hidden rounded-md bg-stone-800 xl:block`}
       />
       <div
-        className={`${shimmer} relative mr-2 hidden h-[300px] w-full rounded-md bg-stone-800 xl:block`}
+        className={`${shimmer} relative hidden h-[260px] w-full overflow-hidden rounded-md bg-stone-800 xl:block`}
       />
       <div
-        className={`${shimmer} relative mr-2 hidden h-[300px] w-full rounded-md bg-stone-800 2xl:block`}
+        className={`${shimmer} relative hidden h-[260px] w-full overflow-hidden rounded-md bg-stone-800 2xl:block`}
       />
       <div
-        className={`${shimmer} relative mr-2 hidden h-[300px] w-full rounded-md bg-stone-800 2xl:block`}
+        className={`${shimmer} relative hidden h-[260px] w-full overflow-hidden rounded-md bg-stone-800 2xl:block`}
       />
     </div>
   )
@@ -35,7 +35,7 @@ export function ReelSkeleton() {
 export function TileSkeleton() {
   return (
     <div
-      className={`${shimmer} relative mr-2 h-[300px] w-full rounded-md bg-stone-800`}
+      className={`${shimmer} relative h-[260px] w-full overflow-hidden rounded-md bg-stone-800`}
     />
   )
 }

@@ -1,4 +1,4 @@
-import AuthButton from '@/components/AuthButton'
+// import AuthButton from '@/components/AuthButton'
 import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
 
@@ -11,7 +11,7 @@ export default async function ProtectedPage() {
     return redirect('/login')
   }
 
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from('wishlist')
     .select()
     .eq('user_id', user?.id)
@@ -26,7 +26,7 @@ export default async function ProtectedPage() {
       <h3 className="mb-4 text-5xl font-semibold">
         This is a protected page that you can only see as an authenticated user
       </h3>
-      <AuthButton />
+      {/* <AuthButton /> */}
     </main>
   )
 }

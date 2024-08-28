@@ -38,47 +38,47 @@ interface ReelProps {
 const Reel: React.FC<ReelProps> = ({ data, isTV = false, title, link }) => {
   return (
     <>
-    <div className='flex justify-between'>
-    {title && (
-      <h3 className="mb-3 text-3xl font-bold">{title}</h3>
-    )}
-    {link && (
-      <Link href={link} className="text-md font-bold mr-4">View more</Link>
-    )}
-    </div>
-    <section className="reel">
-      <Swiper
-        navigation
-        modules={[Keyboard, Navigation, Pagination]}
-        slidesPerView={2.3}
-        grabCursor={true}
-        watchSlidesProgress={true}
-        slidesPerGroup={2}
-        breakpoints={{
-          640: {
-            slidesPerView: 4.2,
-            slidesPerGroup: 4,
-          },
-          1024: {
-            slidesPerView: 6.5,
-            slidesPerGroup: 6,
-          },
-          1440: {
-            slidesPerView: 8,
-            slidesPerGroup: 8,
-          },
-        }}
-      >
-        {data?.map(item => (
-          <SwiperSlide
-            key={item.id}
-            className="max-w-[250px] flex-auto items-center justify-center overflow-hidden"
-          >
-            <MovieTile item={item} width={228} height={342} isTV={isTV} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </section>
+      <div className="flex justify-between">
+        {title && <h3 className="mb-3 text-3xl font-bold">{title}</h3>}
+        {link && (
+          <Link href={link} className="text-md mr-4 font-bold">
+            View more
+          </Link>
+        )}
+      </div>
+      <section className="reel">
+        <Swiper
+          navigation
+          modules={[Keyboard, Navigation, Pagination]}
+          slidesPerView={2.3}
+          grabCursor={true}
+          watchSlidesProgress={true}
+          slidesPerGroup={2}
+          breakpoints={{
+            640: {
+              slidesPerView: 4.2,
+              slidesPerGroup: 4,
+            },
+            1024: {
+              slidesPerView: 6.5,
+              slidesPerGroup: 6,
+            },
+            1440: {
+              slidesPerView: 8,
+              slidesPerGroup: 8,
+            },
+          }}
+        >
+          {data?.map((item) => (
+            <SwiperSlide
+              key={item.id}
+              className="max-w-[250px] flex-auto items-center justify-center overflow-hidden"
+            >
+              <MovieTile item={item} width={228} height={342} isTV={isTV} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </section>
     </>
   )
 }

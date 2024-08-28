@@ -53,7 +53,7 @@ const HeroReel: React.FC<HeroReelProps> = ({ data }) => {
         }}
         keyboard={{ enabled: true }}
         pagination={{ clickable: true }}
-        onAutoplayTimeLeft={onAutoplayTimeLeft}
+        onAutoplayTimeLeft={() => onAutoplayTimeLeft}
       >
         {showcase?.map((movie) => {
           const { backdrop_path, id, title, overview } = movie

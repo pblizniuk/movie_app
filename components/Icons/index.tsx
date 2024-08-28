@@ -3,7 +3,7 @@ import tv_shows from './tv_shows'
 import wishlist from './wishlist'
 import cross from './cross'
 import user from './user'
-type IconProps = {
+export type IconProps = {
   name: string
   color?: string
   size?: string
@@ -12,6 +12,9 @@ type IconProps = {
   height?: string
   strokeWidth?: string
   stroke?: string
+  fill?: string
+  viewBox?: string
+  style?: React.CSSProperties
 }
 
 const Icon = (props: IconProps) => {

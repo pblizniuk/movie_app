@@ -1,4 +1,6 @@
-const movies = (props) => {
+import { type IconProps } from './index'
+
+const movies = (props: IconProps) => {
   const { color = 'white', className, ...additionalProps } = props
   return (
     <svg

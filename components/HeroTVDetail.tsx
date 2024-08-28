@@ -23,7 +23,7 @@ type Movie = {
     vote_average: number
     vote_count: number
     videos: { results: { key: string }[] }
-  },
+  }
   isTV?: boolean
 }
 
@@ -63,19 +63,30 @@ const HeroTVDetail = async ({ data, isTV }: Movie) => {
       <div className="absolute left-0 right-0 top-10">
         <div className="mx-auto flex h-[90vh] w-full max-w-[2000px] flex-col justify-end">
           <div className="mb-32 max-w-5xl px-6">
-            <div className="flex gap-10 items-center mb-8">
+            <div className="mb-8 flex items-center gap-10">
               <div>
-                <Image src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={name} width={300} height={500} className='rounded-md shadow-sm' />
+                <Image
+                  src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                  alt={name}
+                  width={300}
+                  height={500}
+                  className="rounded-md shadow-sm"
+                />
               </div>
               <div>
-              <div className="mb-3 flex gap-5 items-center">
+                <div className="mb-3 flex items-center gap-5">
                   {/* {parentRating && (
                     <div className="rounded-sm bg-lime-500/80 px-1 py-1 font-bold text-white">
                       {parentRating}
                     </div>
                   )} */}
                   {vote_average && (
-                    <div className="font-bold flex gap-2 items-center"><span className="text-xl text-lime-500">{Math.round(vote_average * 10)}%</span> User Score</div>
+                    <div className="flex items-center gap-2 font-bold">
+                      <span className="text-xl text-lime-500">
+                        {Math.round(vote_average * 10)}%
+                      </span>{' '}
+                      User Score
+                    </div>
                   )}
                 </div>
                 <h3 className="mb-2 text-6xl font-bold">{name}</h3>
@@ -84,11 +95,7 @@ const HeroTVDetail = async ({ data, isTV }: Movie) => {
                   <span>
                     {genres?.map((genre, index) => (
                       <span key={genre.id}>
-                        {index > 0 && (
-                          <span className="mx-1">
-                            ⸱
-                          </span>
-                        )}
+                        {index > 0 && <span className="mx-1">⸱</span>}
                         <span key={genre.id}>{genre.name}</span>
                       </span>
                     ))}
@@ -101,7 +108,7 @@ const HeroTVDetail = async ({ data, isTV }: Movie) => {
                   )}
                 </div>
                 <div className="mb-8">
-                  <Buttons id={id} trailerKey={trailerKey} isTV={isTV}  />
+                  <Buttons id={id} trailerKey={trailerKey} isTV={isTV} />
                 </div>
               </div>
             </div>

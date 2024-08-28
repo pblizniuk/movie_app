@@ -1,5 +1,7 @@
-const Cross = (props) => {
-  const { color = 'white', className, ...additionalProps } = props
+import { type IconProps } from './index'
+
+const Cross = (props: IconProps) => {
+  const { className, ...additionalProps } = props
   return (
     <svg
       fill="currentColor"

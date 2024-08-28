@@ -3,8 +3,6 @@ import { signIn, signUp } from '@/utils/actions/auth'
 
 type SearchParams = {
   message?: string
-  onHandleSubmit?: () => void
-  isDialog?: boolean
 }
 export default function Login({
   searchParams,
@@ -12,11 +10,13 @@ export default function Login({
   isDialog = false,
 }: {
   searchParams: SearchParams
-  onHandleSubmit: () => void
+  onHandleSubmit?: () => void
   isDialog?: boolean
 }) {
   const handleSubmit = async (formData: FormData) => {
-    await onHandleSubmit()
+    if (onHandleSubmit instanceof Function) {
+      await onHandleSubmit()
+    }
     await signIn(formData)
   }
 

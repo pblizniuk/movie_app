@@ -16,11 +16,7 @@ export default function Nav() {
           <nav className="flex gap-5 px-3 py-2 font-semibold">
             <span className="group relative">
               <span className="flex items-center">
-                <Icon
-                  name="movies"
-                  size="20"
-                  className="fill-white"
-                />
+                <Icon name="movies" size="20" className="fill-white" />
                 <span className="ml-1 hidden lg:block">Movies</span>
               </span>
               <div className="absolute hidden rounded-md bg-stone-600/90 px-3 py-2 text-foreground/80 group-hover:block">
@@ -33,17 +29,15 @@ export default function Nav() {
                 </div>
               </div>
             </span>
-            <span className='group relative'>
-              <span className='flex items-center'>
-                <Icon
-                  name='tv_shows'
-                  size='20'
-                  color='white'
-                />
-                <span className="ml-1 hidden lg:block whitespace-nowrap">TV Shows</span>
+            <span className="group relative">
+              <span className="flex items-center">
+                <Icon name="tv_shows" size="20" color="white" />
+                <span className="ml-1 hidden whitespace-nowrap lg:block">
+                  TV Shows
+                </span>
               </span>
-              <div className="absolute hidden group-hover:block bg-stone-600/90 rounded-md py-2 px-3 text-foreground/80">
-                <div className="grid grid-rows-2 gap-2 min-w-28">
+              <div className="absolute hidden rounded-md bg-stone-600/90 px-3 py-2 text-foreground/80 group-hover:block">
+                <div className="grid min-w-28 grid-rows-2 gap-2">
                   <Link href="/tv-shows/popular">Popular</Link>
                   <Link href="/tv-shows/top-rated">Top Rated</Link>
                 </div>
@@ -51,11 +45,7 @@ export default function Nav() {
             </span>
             <Link href="/wishlist">
               <span className="flex items-center">
-                <Icon
-                  name="wishlist"
-                  size="20"
-                  className="fill-white"
-                />
+                <Icon name="wishlist" size="20" className="fill-white" />
                 <span className="ml-1 hidden whitespace-nowrap lg:block">
                   Wishlist
                 </span>

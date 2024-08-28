@@ -1,4 +1,6 @@
-const tvShows = (props) => {
+import { type IconProps } from './index'
+
+const tvShows = (props: IconProps) => {
   const { color = 'white', className, ...additionalProps } = props
   return (
     <svg

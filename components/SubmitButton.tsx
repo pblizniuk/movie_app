@@ -5,7 +5,7 @@ import { type ComponentProps } from 'react'
 
 type Props = ComponentProps<'button'> & {
   pendingText?: string
-  formAction: string
+  formAction: (...args: any) => any
 }
 
 export function SubmitButton({ children, pendingText, ...props }: Props) {

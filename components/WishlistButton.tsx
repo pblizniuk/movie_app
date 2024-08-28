@@ -6,14 +6,13 @@ import { getUser } from '@/utils/supabase/helpers/get_user'
 
 export default async function WishlistButton({
   movie_id,
-  isTV
+  isTV,
 }: {
   movie_id: number
   isTV?: boolean
 }) {
   const id = await getUser()
   const isInWishlist = await checkIfMovieIsInWishlist(movie_id)
-console.log(isTV, 'isTV')
   if (!id) {
     return null
   }

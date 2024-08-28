@@ -4,7 +4,7 @@ import WatchTrailerButton from './WatchTrailerButton'
 export default function HeroDetailButtons({
   id,
   trailerKey,
-  isTV
+  isTV,
 }: {
   id: number
   trailerKey: string

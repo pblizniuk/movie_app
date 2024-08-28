@@ -1,4 +1,6 @@
-const wishlist = (props) => {
+import { type IconProps } from './index'
+
+const wishlist = (props: IconProps) => {
   const { color = 'white', className, ...additionalProps } = props
   return (
     <svg
