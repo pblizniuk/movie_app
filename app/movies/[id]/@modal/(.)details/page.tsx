@@ -1,30 +1,21 @@
 'use client'
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { useRouter } from 'next/navigation'
-import Auth from '@/components/Auth'
+import getData from '@/utils/get_data'
 
-export default function LoginModal({
-  searchParams,
+export default async function DetailModal({
+  params,
 }: {
-  searchParams: { message: string; loggedIn: string }
+  params: { id: string }
 }) {
+  const { id }: { id: string } = params
   const router = useRouter()
   const dialogRef = useRef<HTMLDialogElement>(null)
-  const { loggedIn } = searchParams
 
-  useEffect(() => {
-    dialogRef.current?.showModal()
-
-    console.log(loggedIn, loggedIn === 'true', 'use effect')
-
-    if (loggedIn === 'true') {
-      console.log('closing in use effect')
-      dialogRef.current?.close()
-    }
-  }, [loggedIn])
-
+  const titleDetails = await getData(
+    `movie/${id}?language=en-US&append_to_response=release_dates,videos,credits`,
+  )
   const handleClose = () => {
-    console.log('closing')
     router.back()
   }
 
@@ -43,13 +34,9 @@ export default function LoginModal({
           &times;
         </button>
         <h3 className="mb-4 block px-6 py-10 text-3xl font-semibold text-white">
-          Welcome! Sign in or create your free account.
+          {titleDetails?.title}
         </h3>
-        <Auth
-          // onHandleSubmit={handleSubmit}
-          // isDialog
-          searchParams={searchParams}
-        />
+        <p>{titleDetails?.overview}</p>
       </dialog>
     </>
   )

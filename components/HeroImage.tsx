@@ -10,7 +10,7 @@ export default function HeroImage({
 }) {
   return (
     <Image
-      src={`https://image.tmdb.org/t/p/w1280${backdrop_path}&include_adult=false`}
+      src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`}
       alt={title}
       width={1280}
       height={1080}
@@ -18,7 +18,7 @@ export default function HeroImage({
       className="h-full w-full object-cover object-top transition-all delay-150 duration-[8000ms] [&.active]:scale-110"
       priority={true}
       placeholder="blur"
-      blurDataURL={`https://image.tmdb.org/t/p/w1280${backdrop_path}&include_adult=false`}
+      blurDataURL={`https://image.tmdb.org/t/p/w1280${backdrop_path}`}
       onLoad={(e) => (e.currentTarget.className += ' active')}
     />
   )

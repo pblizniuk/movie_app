@@ -4,6 +4,7 @@ import MovieTile from './MovieTile'
 export default async function WishlistTile(props: {
   movie_id: number
   type: string
+  index: number
 }) {
   const { movie_id, type } = props
   const movieDetails = await getData(
@@ -17,6 +18,7 @@ export default async function WishlistTile(props: {
         isTV={type === 'tv_show'}
         width={375}
         height={582}
+        index={props.index}
       />
     </div>
   )

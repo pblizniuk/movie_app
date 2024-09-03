@@ -2,7 +2,6 @@
 
 import React, { useRef } from 'react'
 import Image from 'next/image'
-import WishlistButton from './WishlistButton'
 
 // Swiper components, modules and styles
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
@@ -33,9 +32,11 @@ const HeroReel: React.FC<HeroReelProps> = ({ data }) => {
     if (showcase?.length < 2 || showcase === undefined) {
       return null
     } else {
-      // @ts-ignore
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       progressCircle?.current?.style.setProperty('--progress', 1 - progress)
-      // @ts-ignore
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       progressContent.current.textContent = `${Math.ceil(time / 1000)}s`
     }
   }
@@ -62,7 +63,7 @@ const HeroReel: React.FC<HeroReelProps> = ({ data }) => {
               <div key={id}>
                 <div className="relative z-0 h-[60vh] overflow-hidden">
                   <Image
-                    src={`https://image.tmdb.org/t/p/w1280${backdrop_path}&include_adult=false`}
+                    src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`}
                     alt={title}
                     width={1920}
                     height={1080}

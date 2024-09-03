@@ -21,12 +21,17 @@ export default async function Wishlist() {
     return (
       <>
         <div className="xs:grid-cols-3 grid grid-cols-2 gap-y-6 md:grid-cols-4 lg:grid-cols-8">
-          {bundle?.map((movie: { movie_id: number; type: string }) => {
+          {bundle?.map((movie: { movie_id: number; type: string }, index) => {
             const { movie_id, type } = movie
 
             return (
               <form key={movie_id} className="relative">
-                <WishlistTile key={movie_id} movie_id={movie_id} type={type} />
+                <WishlistTile
+                  key={movie_id}
+                  movie_id={movie_id}
+                  type={type}
+                  index={index}
+                />
                 <input type="hidden" name="movie_id" value={movie_id} />
                 <input type="hidden" name="user_id" value={id} />
                 <button type="submit" formAction={deleteFromWishlist}>

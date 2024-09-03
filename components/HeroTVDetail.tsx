@@ -51,7 +51,7 @@ const HeroTVDetail = async ({ data, isTV }: Movie) => {
     <section>
       <div className="relative flex h-[90vh] justify-center overflow-hidden">
         <Image
-          src={`https://image.tmdb.org/t/p/w1280${backdrop_path}&include_adult=false`}
+          src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`}
           alt={name}
           width={1920}
           height={1080}

@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Buttons from '@/components/HeroDetailButtons'
 import HeroImage from './HeroImage'
+import Link from 'next/link'
 
 type Movie = {
   data: {
@@ -128,6 +129,7 @@ const HeroDetail = async ({ data }: Movie) => {
             </div>
             <h3 className="mb-4 text-4xl font-semibold">Summary</h3>
             <p className="text-xl">{overview}</p>
+            <Link href={`/movies/${id}/details`}>See more</Link>
           </div>
         </div>
       </div>

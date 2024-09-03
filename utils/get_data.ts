@@ -7,8 +7,10 @@ export default async function getData(path: string) {
     },
   }
 
-  const url = `${process.env.NEXT_PUBLIC_TMDB_API_URL}${path}`
+  path = path.replace('?', '?include_adult=false&')
 
+  const url = `${process.env.NEXT_PUBLIC_TMDB_API_URL}${path}`
+  console.log(url)
   const res = await fetch(url, options)
     .then((response) => response.json())
     .catch((err) => console.error(err))

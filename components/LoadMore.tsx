@@ -1,8 +1,11 @@
 'use client'
+import { useInView } from 'react-intersection-observer'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import MovieTile from './MovieTile'
 import getData from '@/utils/get_data'
+import Icon from '@/components/Icons'
+import { MovieTileProps } from '@/utils/types'
 
 export default function LoadMore({
   pagingUrl,
@@ -11,44 +14,58 @@ export default function LoadMore({
   pagingUrl: string
   isTV?: boolean
 }) {
-  const [data, setData] = useState({ results: [] })
-  const [results, setResults] = useState([])
+  // const [data, setData] = useState({ results: [] })
+  const [data, setData] = useState<MovieTileProps[]>([])
   const [pageNumber, setPageNumber] = useState(2) // always start from 2
+  const [loading, setLoading] = useState(false)
 
-  const handleOnCLick = async () => {
-    const response: { results: [] } = await getData(`${pagingUrl}${pageNumber}`)
-    setData(response)
-    // eslint-disable-next-line no-unsafe-optional-chaining
-    setResults([...data?.results, ...response?.results])
-    setPageNumber(pageNumber + 1)
-  }
+  // const handleOnClick = async () => {
+  //   const { results, page } = await getData(`${pagingUrl}${pageNumber}`)
+  //   console.log(page, results?.length, data?.results?.length)
+  //   setData(response)
+  //   // eslint-disable-next-line no-unsafe-optional-chaining
+  //   setResults([...data?.results, ...results])
+  //   setPageNumber(response?.page + 1)
+  // }
+
+  const { ref, inView } = useInView({
+    delay: 50,
+  })
+
+  useEffect(() => {
+    if (inView) {
+      setLoading(true)
+      getData(`${pagingUrl}${pageNumber}`).then(({ results, page }) => {
+        setPageNumber(page + 1)
+        setData([...data, ...results])
+        setLoading(false)
+      })
+    }
+  }, [inView])
 
   return (
     <>
-      {data && (
-        <div className="grid grid-cols-2 gap-y-6 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6">
-          {results?.map((item: { id: number; poster_path: string }, index) => {
-            if (!item?.poster_path) return
-            return (
-              <MovieTile
-                key={`${item?.id}-${index}`}
-                item={item}
-                width={375}
-                height={582}
-                isTV={isTV}
-              />
-            )
-          })}
-        </div>
-      )}
-      <div className="mt-10 flex justify-center">
-        <button
-          type="button"
-          className="mx-auto rounded-full bg-white px-4 py-2 text-black hover:bg-lime-200"
-          onClick={handleOnCLick}
-        >
-          Load More
-        </button>
+      {data?.map((item, index) => {
+        if (!item?.poster_path) return
+        return (
+          <MovieTile
+            key={`${item?.id}-${index}`}
+            item={item}
+            width={375}
+            height={582}
+            isTV={isTV}
+            index={index}
+          />
+        )
+      })}
+      <div className="flex w-full" ref={ref}>
+        {loading && (
+          <Icon
+            name="spinner"
+            className="m-auto h-12 w-12 animate-spin text-lime-500"
+            size="50px"
+          />
+        )}
       </div>
     </>
   )

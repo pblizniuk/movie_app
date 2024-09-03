@@ -6,19 +6,19 @@ type SearchParams = {
 }
 export default function Login({
   searchParams,
-  onHandleSubmit,
-  isDialog = false,
+  // onHandleSubmit,
+  // isDialog = false,
 }: {
   searchParams: SearchParams
-  onHandleSubmit?: () => void
-  isDialog?: boolean
+  // onHandleSubmit?: () => void
+  // isDialog?: boolean
 }) {
-  const handleSubmit = async (formData: FormData) => {
-    if (onHandleSubmit instanceof Function) {
-      await onHandleSubmit()
-    }
-    await signIn(formData)
-  }
+  // const handleSubmit = async (formData: FormData) => {
+  //   if (onHandleSubmit instanceof Function) {
+  //     await onHandleSubmit()
+  //   }
+  //   await signIn(formData)
+  // }
 
   return (
     <div className="flex w-full flex-1 flex-col justify-center gap-2 sm:max-w-md">
@@ -43,7 +43,7 @@ export default function Login({
           required
         />
         <SubmitButton
-          formAction={isDialog ? handleSubmit : signIn}
+          formAction={signIn}
           className="shadow-light-3 hover:shadow-light-2 focus:shadow-light-2 active:shadow-light-2 inline-block rounded bg-lime-500 px-6 py-2 font-semibold leading-normal text-white transition duration-150 ease-in-out hover:bg-lime-600 focus:bg-lime-600 focus:outline-none focus:ring-0 active:bg-lime-600 motion-reduce:transition-none"
           pendingText="Signing In..."
         >

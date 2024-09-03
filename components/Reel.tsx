@@ -42,7 +42,7 @@ const Reel: React.FC<ReelProps> = ({ data, isTV = false, title, link }) => {
         {title && <h3 className="mb-3 text-3xl font-bold">{title}</h3>}
         {link && (
           <Link href={link} className="text-md mr-4 font-bold">
-            View more
+            View More
           </Link>
         )}
       </div>
@@ -69,12 +69,18 @@ const Reel: React.FC<ReelProps> = ({ data, isTV = false, title, link }) => {
             },
           }}
         >
-          {data?.map((item) => (
+          {data?.map((item, index) => (
             <SwiperSlide
               key={item.id}
               className="max-w-[250px] flex-auto items-center justify-center overflow-hidden"
             >
-              <MovieTile item={item} width={228} height={342} isTV={isTV} />
+              <MovieTile
+                item={item}
+                width={228}
+                height={342}
+                isTV={isTV}
+                index={index}
+              />
             </SwiperSlide>
           ))}
         </Swiper>

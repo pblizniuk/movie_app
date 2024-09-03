@@ -9,8 +9,6 @@ export default async function AuthButton() {
     data: { user },
   } = await supabase.auth.getUser()
 
-  console.log('reloaded auth button', user?.id)
-
   return !user ? (
     <Link
       href="/login"
