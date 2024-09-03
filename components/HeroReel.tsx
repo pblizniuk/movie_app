@@ -61,7 +61,7 @@ const HeroReel: React.FC<HeroReelProps> = ({ data }) => {
           return (
             <SwiperSlide key={id} className="group">
               <div key={id}>
-                <div className="relative z-0 h-[60vh] overflow-hidden">
+                <div className="relative z-0 h-[80vh] overflow-hidden">
                   <Image
                     src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`}
                     alt={title}
