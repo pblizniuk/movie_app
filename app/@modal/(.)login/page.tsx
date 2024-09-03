@@ -34,7 +34,7 @@ export default function LoginModal({
       <dialog
         ref={dialogRef}
         onClose={() => handleClose()}
-        className="fixed inset-0 bottom-0 left-0 right-0 top-0 z-[999] m-auto flex h-[50vh] w-[50vh] flex-col items-center justify-center overflow-y-auto bg-black"
+        className="fixed inset-0 bottom-0 left-0 right-0 top-0 z-[999] m-auto flex h-full w-full flex-col items-center justify-center overflow-y-auto bg-black md:h-[50vh] md:w-[50vh]"
       >
         <button
           onClick={() => handleClose()}

@@ -68,15 +68,15 @@ const HeroDetail = async ({ data }: Movie) => {
 
   return (
     <section>
-      <div className="relative flex h-[90vh] justify-center overflow-hidden">
+      <div className="absolute flex w-full justify-center overflow-hidden lg:h-[90vh]">
         <HeroImage backdrop_path={backdrop_path} title={title} />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-900 from-15%"></div>
       </div>
-      <div className="absolute left-0 right-0 top-10">
-        <div className="mx-auto flex h-[90vh] w-full max-w-[2000px] flex-col justify-end">
-          <div className="mb-32 max-w-5xl px-6">
-            <div className="mb-8 flex items-center gap-10">
-              <div>
+      <div className="relative left-0 right-0 top-10">
+        <div className="mx-auto flex w-full max-w-[2000px] flex-col justify-end lg:h-[90vh]">
+          <div className="my-10 max-w-5xl px-6 lg:my-32">
+            <div className="mb-8 items-center gap-10 md:flex">
+              <div className="hidden md:block">
                 <Image
                   src={`https://image.tmdb.org/t/p/w500${poster_path}`}
                   alt={title}
@@ -107,8 +107,10 @@ const HeroDetail = async ({ data }: Movie) => {
                     </div>
                   )}
                 </div>
-                <h3 className="mb-2 text-6xl font-bold">{title}</h3>
-                {tagline && <h4 className="mb-2 text-4xl">{tagline}</h4>}
+                <h3 className="mb-2 text-3xl font-bold lg:text-6xl">{title}</h3>
+                {tagline && (
+                  <h4 className="mb-2 text-xl lg:text-4xl">{tagline}</h4>
+                )}
                 {/* extract to separate component */}
                 <div className="mb-10 text-gray-400">
                   <span>

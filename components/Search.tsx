@@ -49,20 +49,18 @@ export default function Search({
   }
 
   return (
-    <Suspense fallback={null}>
-      <div className="relative" ref={ref}>
-        <input
-          className="w-full min-w-60 rounded-full border border-white bg-transparent px-4 py-2 placeholder:text-foreground/60 focus:border-lime-200 focus:outline-none"
-          type="search"
-          onChange={(e) => handleOnChange(e.target.value)}
-          defaultValue={defaultValue}
-          placeholder="Search..."
-        />
+    <div className="relative hidden lg:block" ref={ref}>
+      <input
+        className="w-full min-w-60 rounded-full border border-white bg-transparent px-4 py-2 placeholder:text-foreground/60 focus:border-lime-200 focus:outline-none"
+        type="search"
+        onChange={(e) => handleOnChange(e.target.value)}
+        defaultValue={defaultValue}
+        placeholder="Search..."
+      />
 
-        {showDropdown && open && (
-          <SearchResultsDropdown query={defaultValue || ''} />
-        )}
-      </div>
-    </Suspense>
+      {showDropdown && open && (
+        <SearchResultsDropdown query={defaultValue || ''} />
+      )}
+    </div>
   )
 }
