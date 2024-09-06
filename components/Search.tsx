@@ -17,10 +17,19 @@ export default function Search({
 
   useEffect(() => {
     const params = new URLSearchParams(searchParams)
+
+    // clear the search bar if no query
+    params?.get('query') === null && ref.current && ref.current.reset()
+
     const handleOutSideClick = (e: MouseEvent) => {
       if (!ref.current?.contains(e.target as Node)) {
+        // close the dropdown if clicked outside
         setOpen(false)
+
+        // remove the query param
         params.delete('query')
+
+        // reset the search bar
         if (ref.current) {
           ref.current.reset()
         }

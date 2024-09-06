@@ -41,8 +41,8 @@ const Reel: React.FC<ReelProps> = ({ data, isTV = false, title, link }) => {
       <div className="flex justify-between">
         {title && <h3 className="mb-3 text-3xl font-bold">{title}</h3>}
         {link && (
-          <Link href={link} className="text-md mr-4 font-bold">
-            View More
+          <Link href={link} className="text-md mr-4 font-bold uppercase">
+            View more
           </Link>
         )}
       </div>
@@ -69,20 +69,24 @@ const Reel: React.FC<ReelProps> = ({ data, isTV = false, title, link }) => {
             },
           }}
         >
-          {data?.map((item, index) => (
-            <SwiperSlide
-              key={item.id}
-              className="max-w-[250px] flex-auto items-center justify-center overflow-hidden"
-            >
-              <MovieTile
-                item={item}
-                width={228}
-                height={342}
-                isTV={isTV}
-                index={index}
-              />
-            </SwiperSlide>
-          ))}
+          {data?.map((item, index) => {
+            if (!item?.poster_path) return null
+
+            return (
+              <SwiperSlide
+                key={item.id}
+                className="max-w-[250px] flex-auto items-center justify-center overflow-hidden"
+              >
+                <MovieTile
+                  item={item}
+                  width={228}
+                  height={342}
+                  isTV={isTV}
+                  index={index}
+                />
+              </SwiperSlide>
+            )
+          })}
         </Swiper>
       </section>
     </>

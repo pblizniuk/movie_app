@@ -19,7 +19,7 @@ export const signIn = async (formData: FormData) => {
     return redirect('/login?message=Could not authenticate user')
   }
   revalidatePath('/login')
-  return redirect('/login/?loggedIn=true')
+  return redirect('/login?loggedIn=true')
 }
 
 export const signUp = async (formData: FormData) => {

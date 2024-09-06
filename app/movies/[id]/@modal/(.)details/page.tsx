@@ -51,11 +51,11 @@ export default function DetailModal({
         viewport={{ amount: 0 }}
         className="absolute inset-0 z-[999] flex h-full min-h-[100vh] w-full min-w-[100vw] items-center justify-center overflow-y-auto bg-stone-900/90"
       />
-      <MotionDiv
-        initial={{ opacity: 1, x: '-100%' }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 1, x: '100%' }}
-        transition={{ duration: 0.6, ease: 'easeInOut' }}
+      <div
+      // initial={{ opacity: 1, x: '-100%' }}
+      // animate={{ opacity: 1, x: 0 }}
+      // exit={{ opacity: 1, x: '100%' }}
+      // transition={{ duration: 0.6, ease: 'easeInOut' }}
       >
         <dialog
           ref={dialogRef}
@@ -70,7 +70,7 @@ export default function DetailModal({
           </button>
           <TitleMeta data={details} />
         </dialog>
-      </MotionDiv>
+      </div>
     </>
   )
 }

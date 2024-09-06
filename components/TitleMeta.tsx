@@ -92,9 +92,7 @@ const TitleMeta = ({ data }: MovieData) => {
                 ))}
           </div>
         </div>
-        <div>
-          <TitleDetailImages images={images} />
-        </div>
+        <div>{/* <TitleDetailImages images={images} /> */}</div>
       </div>
     </>
   )

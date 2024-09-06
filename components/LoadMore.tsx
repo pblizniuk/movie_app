@@ -31,7 +31,7 @@ export default function LoadMore({
         setLoading(false)
       })
     }
-  }, [inView])
+  }, [inView, pageNumber, pagingUrl, data])
 
   return (
     <>

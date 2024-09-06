@@ -57,6 +57,8 @@ const HeroDetail = async ({ data }: MovieData) => {
                   width={500}
                   height={750}
                   className="max-w-[300px] rounded-md shadow-sm"
+                  loading="eager"
+                  priority={true}
                 />
               </MotionDiv>
               <div>
@@ -104,7 +106,7 @@ const HeroDetail = async ({ data }: MovieData) => {
             <p className="mb-4 text-xl">{overview}</p>
             <Link
               href={`/movies/${id}/details`}
-              className="text-xl font-semibold text-lime-500"
+              className="text-lg font-semibold uppercase text-lime-500"
             >
               More details
             </Link>

@@ -13,8 +13,8 @@ const TitleDetailImages = async ({ images }: ImagesObject) => {
 
   return (
     <>
-      {imageArray?.map((group) => (
-        <div className="my-8">
+      {imageArray?.map((group, index) => (
+        <div className="my-8" key={index}>
           {group?.gallery?.length > 0 && (
             <h2 className="mb-4 text-3xl font-bold">{group.title}</h2>
           )}
@@ -22,15 +22,16 @@ const TitleDetailImages = async ({ images }: ImagesObject) => {
             <div className="be-scroll relative m-auto max-w-none snap-x snap-mandatory overflow-x-scroll pb-8">
               <div className="flex flex-row gap-4">
                 {group?.gallery?.map((item: { file_path: string }) => (
-                  <Image
-                    key={item.file_path}
-                    src={`https://image.tmdb.org/t/p/original${item.file_path}`}
-                    alt={item.file_path}
-                    width={300}
-                    height={500}
-                    className="rounded-md shadow-sm"
-                    loading="lazy"
-                  />
+                  <div key={item.file_path}>
+                    <Image
+                      src={`https://image.tmdb.org/t/p/original${item.file_path}`}
+                      alt={item.file_path}
+                      width={300}
+                      height={500}
+                      className="h-[300px] w-auto snap-center rounded-md shadow-sm"
+                      loading="lazy"
+                    />
+                  </div>
                 ))}
               </div>
             </div>

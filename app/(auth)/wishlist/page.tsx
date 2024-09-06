@@ -3,11 +3,17 @@ import { getWishlistTitles } from '@/utils/supabase/helpers/wishlist'
 import { getUser } from '@/utils/supabase/helpers/get_user'
 import { deleteFromWishlist } from '@/utils/actions/wishlist'
 import Icon from '@/components/Icons'
+import { redirect } from 'next/navigation'
 
 type Bundle = { movie_id: number; type: string }[]
 
 export default async function Wishlist() {
   const id = await getUser()
+
+  if (!id) {
+    return redirect('/login')
+  }
+
   const wishlist = await getWishlistTitles()
 
   const movies = wishlist?.data?.filter(

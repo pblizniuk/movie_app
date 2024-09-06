@@ -31,11 +31,9 @@ const HeroReel: React.FC<HeroReelProps> = ({ data }) => {
   const onAutoplayTimeLeft = (s: number, time: number, progress: number) => {
     if (showcase?.length < 2 || showcase === undefined) {
       return null
-    } else {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    } else if (progressCircle?.current && progressContent?.current) {
       // @ts-expect-error
       progressCircle?.current?.style.setProperty('--progress', 1 - progress)
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
       progressContent.current.textContent = `${Math.ceil(time / 1000)}s`
     }
@@ -58,7 +56,10 @@ const HeroReel: React.FC<HeroReelProps> = ({ data }) => {
         onAutoplayTimeLeft={onAutoplayTimeLeft}
       >
         {showcase?.map((movie) => {
+          console.log(movie)
           const { backdrop_path, id, title, overview } = movie
+          if (!backdrop_path) return null
+
           return (
             <SwiperSlide key={id} className="group">
               <div key={id}>

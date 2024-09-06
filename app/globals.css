@@ -23,6 +23,11 @@
 .swiper-button-prev,
 .swiper-button-next {
   color: var(--swiper-theme-color-alt) !important;
+  top: 45% !important;
+}
+
+.swiper-button-next {
+  margin-right: 10px;
 }
 
 .swiper-pagination-bullet {

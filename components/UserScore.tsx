@@ -10,9 +10,9 @@ const UserScore = ({
   const userVotePercentage = Math.round(vote_average * 10)
   let ringColor = 'lime-500'
   if (userVotePercentage < 50) ringColor = 'red-500'
-  if (userVotePercentage >= 50 && userVotePercentage < 80)
+  if (userVotePercentage >= 50 && userVotePercentage < 70)
     ringColor = 'amber-500'
-  if (userVotePercentage >= 80) ringColor = 'lime-500'
+  if (userVotePercentage >= 70) ringColor = 'lime-500'
 
   let classes = ''
   if (size === 'large') {
@@ -24,7 +24,9 @@ const UserScore = ({
   }
 
   return (
-    <div className={`user-score relative ${classes} text-${ringColor}`}>
+    <div
+      className={`user-score relative ${classes} text-${ringColor} rounded-full bg-black/35`}
+    >
       <svg
         className="bg absolute left-0 top-0 h-full w-full"
         viewBox="0 0 48 48"

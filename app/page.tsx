@@ -88,7 +88,7 @@ async function TopRatedTV() {
 }
 
 export default async function HomePage() {
-  const popularMovies = await getData('movie/popular?language=en-US&page=1')
+  const popularMovies = await getData('movie/popular?language=en-US&page=1&app')
 
   return (
     <div>

@@ -26,7 +26,12 @@ export default async function AuthButton() {
           <span className="hidden whitespace-nowrap md:block">
             Hi, {user.email}
           </span>
-          <Link href="/account">Account</Link>
+          <Link
+            className="border-b border-t border-stone-500 py-2"
+            href="/account"
+          >
+            Account
+          </Link>
           <form action={signOut}>
             <button className="w-full rounded-md bg-btn-background px-4 py-2 no-underline hover:bg-btn-background-hover">
               Log Out
