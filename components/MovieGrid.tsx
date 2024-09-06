@@ -11,7 +11,7 @@ export default async function MovieGrid({
   return (
     <div>
       <h3 className="mb-12 text-5xl font-semibold lg:mb-20">{title}</h3>
-      <div className="grid grid-cols-2 gap-y-6 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6">
+      <div className="grid grid-cols-2 gap-y-6 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
         {data.map((item: { id: number; poster_path: string }, index) => {
           if (!item?.poster_path) return
           return (

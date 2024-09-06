@@ -1,4 +1,4 @@
-'use client' // <===== REQUIRED
+'use client'
 
 import React, { useRef } from 'react'
 import Image from 'next/image'
@@ -54,7 +54,8 @@ const HeroReel: React.FC<HeroReelProps> = ({ data }) => {
         }}
         keyboard={{ enabled: true }}
         pagination={{ clickable: true }}
-        onAutoplayTimeLeft={() => onAutoplayTimeLeft}
+        // @ts-expect-error
+        onAutoplayTimeLeft={onAutoplayTimeLeft}
       >
         {showcase?.map((movie) => {
           const { backdrop_path, id, title, overview } = movie

@@ -15,7 +15,9 @@ export default async function Movie({ params }: { params: never }) {
     <div>
       <HeroDetail data={titleDetails} />
       <main className="mx-auto w-full max-w-[2000px] px-6">
-        <Reel data={similarTitles?.results} title="Similar Movies" />
+        {similarTitles && (
+          <Reel data={similarTitles?.results} title="Similar Movies" />
+        )}
       </main>
     </div>
   )

@@ -1,7 +1,7 @@
 'use client'
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
 import SearchResultsDropdown from './SearchResultsDropdown'
-import { Suspense, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function Search({
   showDropdown = false,
@@ -12,17 +12,18 @@ export default function Search({
   const pathname = usePathname()
   const { replace } = useRouter()
   const defaultValue = searchParams.get('query')?.toString()
-
-  const ref = useRef<HTMLDivElement>(null)
-
+  const ref = useRef<HTMLFormElement>(null)
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
+    const params = new URLSearchParams(searchParams)
     const handleOutSideClick = (e: MouseEvent) => {
-      const params = new URLSearchParams(searchParams)
       if (!ref.current?.contains(e.target as Node)) {
         setOpen(false)
         params.delete('query')
+        if (ref.current) {
+          ref.current.reset()
+        }
       }
     }
 
@@ -49,7 +50,7 @@ export default function Search({
   }
 
   return (
-    <div className="relative hidden lg:block" ref={ref}>
+    <form className="relative hidden lg:block" ref={ref}>
       <input
         className="w-full min-w-60 rounded-full border border-white bg-transparent px-4 py-2 placeholder:text-foreground/60 focus:border-lime-200 focus:outline-none"
         type="search"
@@ -61,6 +62,6 @@ export default function Search({
       {showDropdown && open && (
         <SearchResultsDropdown query={defaultValue || ''} />
       )}
-    </div>
+    </form>
   )
 }

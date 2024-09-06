@@ -8,7 +8,7 @@ export default async function WishlistButton({
   movie_id,
   isTV,
 }: {
-  movie_id: number
+  movie_id: string | number
   isTV?: boolean
 }) {
   const id = await getUser()

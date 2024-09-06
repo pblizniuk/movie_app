@@ -4,7 +4,7 @@ import Icon from './Icons'
 export default function WatchTrailerButton({
   trailerKey,
 }: {
-  movie_id: number
+  movie_id: string | number
   trailerKey: string
 }) {
   const [dialogOpen, setDialogOpen] = useState(false)

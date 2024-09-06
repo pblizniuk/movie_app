@@ -1,11 +1,18 @@
-export default function Details() {
+import TitleMeta from '@/components/TitleMeta'
+import getData from '@/utils/get_data'
+
+export default async function Details({
+  params: { id },
+}: {
+  params: { id: number | string }
+}) {
+  const titleDetails = await getData(
+    `movie/${id}?language=en-US&append_to_response=release_dates,videos,credits,images&include_image_language=en,null`,
+  )
+
   return (
-    <div className="modal-details flex h-[100vh] items-center justify-center">
-      <h1>Physical Details Page</h1>
-      <p>Details</p>
-      <p>Details</p>
-      <p>Details</p>
-      <p>Details</p>
-    </div>
+    <main className="mx-auto mt-36 flex w-full max-w-[2000px] px-6">
+      <TitleMeta data={titleDetails} />
+    </main>
   )
 }

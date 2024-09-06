@@ -14,19 +14,9 @@ export default function LoadMore({
   pagingUrl: string
   isTV?: boolean
 }) {
-  // const [data, setData] = useState({ results: [] })
   const [data, setData] = useState<MovieTileProps[]>([])
-  const [pageNumber, setPageNumber] = useState(2) // always start from 2
+  const [pageNumber, setPageNumber] = useState(2) // always start from page 2
   const [loading, setLoading] = useState(false)
-
-  // const handleOnClick = async () => {
-  //   const { results, page } = await getData(`${pagingUrl}${pageNumber}`)
-  //   console.log(page, results?.length, data?.results?.length)
-  //   setData(response)
-  //   // eslint-disable-next-line no-unsafe-optional-chaining
-  //   setResults([...data?.results, ...results])
-  //   setPageNumber(response?.page + 1)
-  // }
 
   const { ref, inView } = useInView({
     delay: 50,

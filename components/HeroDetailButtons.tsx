@@ -6,7 +6,7 @@ export default function HeroDetailButtons({
   trailerKey,
   isTV,
 }: {
-  id: number
+  id: string | number
   trailerKey: string
   isTV?: boolean
 }) {

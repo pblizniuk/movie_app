@@ -1,40 +1,13 @@
 import Image from 'next/image'
 import Buttons from '@/components/HeroDetailButtons'
-import HeroImage from './HeroImage'
+import HeroImage from '@/components/HeroImage'
 import Link from 'next/link'
+import { MotionDiv } from '@/components/MotionDiv'
+import type { MovieData } from '@/utils/types'
+import getCertification from '@/utils/helpers/getCertification'
+import UserScore from './UserScore'
 
-type Movie = {
-  data: {
-    id: number
-    title: string
-    tagline: string
-    backdrop_path: string
-    poster_path: string
-    overview: string
-    genres: { id: number; name: string }[]
-    release_date: string
-    release_dates: {
-      results: {
-        iso_3166_1: string
-        release_dates: {
-          certification: string
-        }[]
-      }[]
-    }
-    runtime: number
-    vote_average: number
-    vote_count: number
-    videos: {
-      results: {
-        official: boolean
-        type: string
-        key: string
-      }[]
-    }
-  }
-}
-
-const HeroDetail = async ({ data }: Movie) => {
+const HeroDetail = async ({ data }: MovieData) => {
   if (!data) return null
 
   const {
@@ -52,13 +25,9 @@ const HeroDetail = async ({ data }: Movie) => {
     runtime,
     tagline,
   } = data
-  const { results = [] } = Object(release_dates)
-  const result = results?.find(
-    (result: { iso_3166_1: string }) => result?.iso_3166_1 === 'US',
-  )
   const hours = Math.floor(runtime / 60)
   const minutes = runtime % 60
-  const parentRating = result && result?.release_dates[0].certification
+  const parentRating = getCertification(release_dates)
   const officialTrailer = videos?.results?.filter(
     (video) => video?.type === 'Trailer' && video?.official === true,
   )
@@ -73,10 +42,15 @@ const HeroDetail = async ({ data }: Movie) => {
         <div className="absolute inset-0 bg-gradient-to-t from-stone-900 from-15%"></div>
       </div>
       <div className="relative left-0 right-0 top-10">
-        <div className="mx-auto flex w-full max-w-[2000px] flex-col justify-end lg:h-[90vh]">
+        <div className="mx-auto flex w-full max-w-[2000px] flex-col justify-end lg:min-h-[90vh]">
           <div className="my-10 max-w-5xl px-6 lg:my-32">
             <div className="mb-8 items-center gap-10 md:flex">
-              <div className="hidden md:block">
+              <MotionDiv
+                className="hidden md:block"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: 0.2, ease: 'easeInOut' }}
+              >
                 <Image
                   src={`https://image.tmdb.org/t/p/w500${poster_path}`}
                   alt={title}
@@ -84,8 +58,7 @@ const HeroDetail = async ({ data }: Movie) => {
                   height={750}
                   className="max-w-[300px] rounded-md shadow-sm"
                 />
-              </div>
-
+              </MotionDiv>
               <div>
                 <div className="mb-3 flex items-center gap-5">
                   {parentRating && (
@@ -100,9 +73,7 @@ const HeroDetail = async ({ data }: Movie) => {
                   )}
                   {vote_average && (
                     <div className="flex items-center gap-2 font-bold">
-                      <span className="text-xl text-lime-500">
-                        {Math.round(vote_average * 10)}%
-                      </span>{' '}
+                      <UserScore vote_average={vote_average} />
                       User Score
                     </div>
                   )}
@@ -130,8 +101,13 @@ const HeroDetail = async ({ data }: Movie) => {
               </div>
             </div>
             <h3 className="mb-4 text-4xl font-semibold">Summary</h3>
-            <p className="text-xl">{overview}</p>
-            <Link href={`/movies/${id}/details`}>See more</Link>
+            <p className="mb-4 text-xl">{overview}</p>
+            <Link
+              href={`/movies/${id}/details`}
+              className="text-xl font-semibold text-lime-500"
+            >
+              More details
+            </Link>
           </div>
         </div>
       </div>

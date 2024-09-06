@@ -26,7 +26,7 @@ export async function getWishlistTitles() {
   }
 }
 
-export async function checkIfMovieIsInWishlist(movie_id: number) {
+export async function checkIfMovieIsInWishlist(movie_id: string | number) {
   const data = await getWishlistTitles()
 
   if (!data) {

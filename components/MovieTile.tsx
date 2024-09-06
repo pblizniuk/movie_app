@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { imageTileData } from '@/global_constants'
 import type { MovieTileProps } from '@/utils/types'
 import { MotionDiv } from '@/components/MotionDiv'
 
@@ -45,8 +44,6 @@ export default function MovieTile({
           width={width}
           height={height}
           loading="lazy"
-          placeholder="blur"
-          blurDataURL={imageTileData}
         />
       </MotionDiv>
       <h3 className="pr-4">{isTV ? name : title}</h3>
