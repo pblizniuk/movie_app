@@ -14,7 +14,7 @@ export default async function SearchPage({
       <main className="mx-auto flex h-[100vh] w-full max-w-[2000px] px-6">
         <div className="m-auto flex flex-col">
           <h3 className="mb-4 text-5xl font-semibold">
-            Want to search for something?
+            What would you like to watch?
           </h3>
           <Search />
         </div>

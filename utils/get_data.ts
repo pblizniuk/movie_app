@@ -7,7 +7,7 @@ export default async function getData(path: string) {
     },
   }
 
-  path = path.replace('?', '?include_adult=false&')
+  path = path.replace('?', '?include_adult=false&region=US&')
 
   const url = `${process.env.NEXT_PUBLIC_TMDB_API_URL}${path}`
 

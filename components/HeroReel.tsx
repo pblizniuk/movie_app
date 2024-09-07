@@ -56,7 +56,6 @@ const HeroReel: React.FC<HeroReelProps> = ({ data }) => {
         onAutoplayTimeLeft={onAutoplayTimeLeft}
       >
         {showcase?.map((movie) => {
-          console.log(movie)
           const { backdrop_path, id, title, overview } = movie
           if (!backdrop_path) return null
 
