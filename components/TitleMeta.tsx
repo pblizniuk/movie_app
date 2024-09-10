@@ -2,6 +2,8 @@ import getCertification from '@/utils/helpers/getCertification'
 import UserScore from '@/components/UserScore'
 import { MovieData } from '@/utils/types'
 import TitleDetailImages from '@/components/TitleDetailImages'
+import CastReel from '@/components/CastReel'
+import Image from 'next/image'
 
 const TitleMeta = ({ data }: MovieData) => {
   const {
@@ -38,7 +40,7 @@ const TitleMeta = ({ data }: MovieData) => {
         </div>
         <div className="mb-3 flex items-center gap-5">
           {parentRating && (
-            <div className="rounded-sm bg-lime-500 px-1 py-1 font-bold text-white">
+            <div className="rounded-sm bg-lime-500 px-2 py-1 font-bold text-white">
               {parentRating}
             </div>
           )}
@@ -60,27 +62,37 @@ const TitleMeta = ({ data }: MovieData) => {
           {title}
         </h2>
         {tagline && <h4 className="mb-4 text-xl lg:text-4xl">{tagline}</h4>}
-        <p className="mb-4 max-w-[70%] text-xl">{overview}</p>
+        <p className="mb-4 max-w-[70%] text-xl text-white/70">{overview}</p>
         <div className="my-8 w-full bg-gradient-to-r from-transparent via-foreground/10 to-transparent p-[1px]" />
         <h2 className="mb-4 text-3xl font-bold">Crew:</h2>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 gap-4">
           <div className="rounded-md bg-stone-800/80 p-3">
             <p className="text-xl font-bold">Director(s):</p>
             {director &&
               director
                 ?.slice(0, 4)
-                ?.map((director: { name: string }, index: number) => (
-                  <div key={index}>{director.name}</div>
-                ))}
-          </div>
-          <div className="rounded-md bg-stone-800/80 p-3">
-            <p className="text-xl font-bold">Cast:</p>
-            {cast &&
-              cast
-                ?.slice(0, 10)
-                ?.map((actor: { name: string }, index: number) => (
-                  <div key={index}>{actor.name}</div>
-                ))}
+                ?.map(
+                  (
+                    director: { name: string; profile_path: string },
+                    index: number,
+                  ) => (
+                    <>
+                      {director?.profile_path !== null && (
+                        <Image
+                          src={`https://image.tmdb.org/t/p/original${director?.profile_path}`}
+                          alt={director?.name}
+                          width={384}
+                          height={576}
+                          className="max-w-24 snap-center rounded-md shadow-sm"
+                          loading="lazy"
+                        />
+                      )}
+                      <p key={index} className="font-bold">
+                        {director.name}
+                      </p>
+                    </>
+                  ),
+                )}
           </div>
           <div className="rounded-md bg-stone-800/80 p-3">
             <p className="text-xl font-bold">Studio(s):</p>
@@ -92,7 +104,10 @@ const TitleMeta = ({ data }: MovieData) => {
                 ))}
           </div>
         </div>
-        <div>{/* <TitleDetailImages images={images} /> */}</div>
+        <CastReel cast={cast} />
+        <div>
+          <TitleDetailImages images={images} />
+        </div>
       </div>
     </>
   )

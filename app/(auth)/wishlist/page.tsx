@@ -44,9 +44,9 @@ export default async function Wishlist() {
                   <span className="absolute -top-3 right-1">
                     <span className="block rounded-full bg-lime-500 px-1 py-1 transition-colors hover:bg-lime-600">
                       <Icon
-                        className="h-6 w-6 rotate-45 text-white"
+                        className="h-4 w-4 rotate-45 text-white"
                         name="cross"
-                        size="30"
+                        size="26"
                       />
                     </span>
                   </span>
@@ -61,7 +61,7 @@ export default async function Wishlist() {
 
   return (
     <main className="mx-auto mt-36 w-full max-w-[2000px] px-6">
-      <h3 className="mb-4 text-5xl font-semibold">Your Wishlist</h3>
+      <h3 className="mb-4 text-5xl font-semibold">My Wishlist</h3>
       <div className="my-8 w-full bg-gradient-to-r from-transparent via-foreground/10 to-transparent p-[1px]" />
       <h4 className="mb-12 text-3xl font-semibold">Movies</h4>
       {movies && wishlistBundle(movies)}

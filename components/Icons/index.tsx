@@ -4,6 +4,8 @@ import wishlist from './wishlist'
 import cross from './cross'
 import user from './user'
 import spinner from './spinner'
+import loupe from './loupe'
+
 export type IconProps = {
   name: string
   color?: string
@@ -30,6 +32,7 @@ const Icon = (props: IconProps) => {
       {name === 'cross' && cross({ ...props, ...sizing })}
       {name === 'user' && user({ ...props, ...sizing })}
       {name === 'spinner' && spinner({ ...props, ...sizing })}
+      {name === 'loupe' && loupe({ ...props, ...sizing })}
     </>
   )
 }

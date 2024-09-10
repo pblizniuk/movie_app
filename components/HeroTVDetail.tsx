@@ -91,7 +91,7 @@ const HeroTVDetail = async ({ data, isTV }: Movie) => {
                 </div>
                 <h3 className="mb-2 text-6xl font-bold">{name}</h3>
                 {/* extract to separate component */}
-                <div className="mb-10 text-gray-400">
+                <div className="mb-10 text-white/60">
                   <span>
                     {genres?.map((genre, index) => (
                       <span key={genre.id}>
@@ -113,7 +113,7 @@ const HeroTVDetail = async ({ data, isTV }: Movie) => {
               </div>
             </div>
             <h3 className="mb-4 text-4xl font-semibold">Summary</h3>
-            <p className="text-xl">{overview}</p>
+            <p className="text-xl text-white/70">{overview}</p>
           </div>
         </div>
       </div>

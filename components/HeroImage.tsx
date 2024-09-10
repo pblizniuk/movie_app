@@ -32,7 +32,7 @@ export default function HeroImage({
         width={1280}
         height={1080}
         quality={100}
-        className="h-full w-full object-cover object-top transition-all delay-150 duration-[8000ms] [&.active]:scale-110"
+        className="h-full w-full min-w-[100vw] object-cover object-top transition-transform delay-150 duration-[8000ms] [&.active]:scale-110"
         priority={true}
         onLoad={(e) => (e.currentTarget.className += ' active')}
       />

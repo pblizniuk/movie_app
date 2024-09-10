@@ -9,7 +9,7 @@ export default async function Page() {
       <MovieGrid
         title="Popular TV Shows"
         data={data?.results}
-        pagingUrl="movie/upcoming?language=en-US&page="
+        pagingUrl="tv/popular?language=en-US&page="
         isTV
       />
     </main>

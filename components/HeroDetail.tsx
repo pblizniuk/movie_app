@@ -21,7 +21,6 @@ const HeroDetail = async ({ data }: MovieData) => {
     release_dates,
     videos,
     vote_average,
-    vote_count,
     runtime,
     tagline,
   } = data
@@ -63,29 +62,29 @@ const HeroDetail = async ({ data }: MovieData) => {
               </MotionDiv>
               <div>
                 <div className="mb-3 flex items-center gap-5">
-                  {parentRating && (
-                    <div className="rounded-sm bg-lime-500 px-1 py-1 font-bold text-white">
+                  {parentRating ? (
+                    <div className="rounded-sm bg-lime-500 px-2 py-1 font-bold text-white">
                       {parentRating}
                     </div>
-                  )}
-                  {runtime && (
+                  ) : null}
+                  {runtime ? (
                     <div className="font-bold">
                       {hours}h {minutes} min
                     </div>
-                  )}
-                  {vote_average && (
+                  ) : null}
+                  {vote_average ? (
                     <div className="flex items-center gap-2 font-bold">
                       <UserScore vote_average={vote_average} />
                       User Score
                     </div>
-                  )}
+                  ) : null}
                 </div>
                 <h3 className="mb-2 text-3xl font-bold lg:text-6xl">{title}</h3>
-                {tagline && (
+                {tagline ? (
                   <h4 className="mb-2 text-xl lg:text-4xl">{tagline}</h4>
-                )}
+                ) : null}
                 {/* extract to separate component */}
-                <div className="mb-10 text-gray-400">
+                <div className="mb-10 text-white/60">
                   <span>
                     {genres?.map((genre, index) => (
                       <span key={genre.id}>
@@ -103,7 +102,7 @@ const HeroDetail = async ({ data }: MovieData) => {
               </div>
             </div>
             <h3 className="mb-4 text-4xl font-semibold">Summary</h3>
-            <p className="mb-4 text-xl">{overview}</p>
+            <p className="mb-4 text-xl text-white/70">{overview}</p>
             <Link
               href={`/movies/${id}/details`}
               className="text-lg font-semibold uppercase text-lime-500"

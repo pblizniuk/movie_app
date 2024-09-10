@@ -88,11 +88,12 @@ async function TopRatedTV() {
 }
 
 export default async function HomePage() {
-  const popularMovies = await getData('movie/popular?language=en-US&page=1&app')
+  const popularMovies = await getData('movie/popular?language=en-US&page=1')
+  const topPopularMovies = popularMovies?.results?.slice(0, 3)
 
   return (
     <div>
-      <Header data={popularMovies?.results} />
+      <Header data={topPopularMovies} />
       <main className="mx-auto w-full max-w-[2000px] p-6">
         <Suspense fallback={<ReelSkeleton />}>
           <PopularMovies />

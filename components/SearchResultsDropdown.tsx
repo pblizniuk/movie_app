@@ -19,7 +19,7 @@ export default function SearchResultsDropdown({ query }: { query: string }) {
     handleResults()
   }, [query, dropdown])
 
-  if (!query) return null
+  if (!query || !searchResults) return null
 
   return (
     <div
