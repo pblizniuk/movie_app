@@ -6,7 +6,24 @@ const variants = {
   visible: { opacity: 1 },
 }
 
-const Episodes = ({ episodes }) => {
+type Episodes = {
+  episodes: {
+    id: number
+    name: string
+    overview: string
+    still_path: string
+    air_date: string
+    episode_number: number
+    runtime: number
+    vote_average: number
+    vote_count: number
+    season_number: number
+    production_code: string
+    show_id: number
+  }[]
+}
+
+const Episodes = ({ episodes }: Episodes) => {
   console.log({ episodes })
   if (!episodes?.length) return null
 

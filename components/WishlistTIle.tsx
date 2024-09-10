@@ -8,7 +8,7 @@ export default async function WishlistTile(props: {
 }) {
   const { movie_id, type } = props
   const movieDetails = await getData(
-    `${type === 'movie' ? 'movie' : 'tv'}/${movie_id}?language=en-US&append_to_response=release_dates`,
+    `${type === 'movie' ? 'movie' : 'tv'}/${movie_id}?append_to_response=release_dates`,
   )
 
   return (

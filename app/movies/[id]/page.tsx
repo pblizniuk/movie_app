@@ -5,11 +5,9 @@ import getData from '@/utils/get_data'
 export default async function Movie({ params }: { params: never }) {
   const { id }: { id: string } = params
   const titleDetails = await getData(
-    `movie/${id}?language=en-US&append_to_response=release_dates,videos,credits`,
+    `movie/${id}?append_to_response=release_dates,videos,credits`,
   )
-  const recommendedTitles = await getData(
-    `movie/${id}/recommendations?language=en-US&page=1`,
-  )
+  const recommendedTitles = await getData(`movie/${id}/recommendations?page=1`)
 
   return (
     <div>

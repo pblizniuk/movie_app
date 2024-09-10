@@ -3,9 +3,11 @@ import getData from '@/utils/get_data'
 import Reel from '@/components/Reel'
 import { Suspense } from 'react'
 import { ReelSkeleton } from '@/components/Skeletons'
+import getRandomSlice from '@/utils/helpers/getRandomSlice'
+import GenrePills from '@/components/GenrePills'
 
 async function PopularMovies() {
-  const data = await getData('movie/popular?language=en-US&page=1')
+  const data = await getData('movie/popular?page=1')
   if (!data) return null
 
   return (
@@ -16,7 +18,7 @@ async function PopularMovies() {
   )
 }
 async function NowPlayingMovies() {
-  const data = await getData('movie/now_playing?language=en-US&page=1')
+  const data = await getData('movie/now_playing?page=1')
   return (
     <>
       <Reel
@@ -30,7 +32,7 @@ async function NowPlayingMovies() {
 }
 
 async function TopRatedMovies() {
-  const data = await getData('movie/top_rated?language=en-US&page=1')
+  const data = await getData('movie/top_rated?page=1')
   return (
     <>
       <Reel
@@ -44,7 +46,7 @@ async function TopRatedMovies() {
 }
 
 async function UpcomingMovies() {
-  const data = await getData('movie/upcoming?language=en-US&page=1')
+  const data = await getData('movie/upcoming?page=1')
   return (
     <>
       <Reel
@@ -58,7 +60,7 @@ async function UpcomingMovies() {
 }
 
 async function PopularTV() {
-  const data = await getData('tv/popular?language=en-US&page=1')
+  const data = await getData('tv/popular?page=1')
   return (
     <>
       <Reel
@@ -73,7 +75,7 @@ async function PopularTV() {
 }
 
 async function TopRatedTV() {
-  const data = await getData('tv/top_rated?language=en-US&page=1')
+  const data = await getData('tv/top_rated?page=1')
   return (
     <>
       <Reel
@@ -88,21 +90,21 @@ async function TopRatedTV() {
 }
 
 export default async function HomePage() {
-  const popularMovies = await getData('movie/popular?language=en-US&page=1')
-  const topPopularMovies = popularMovies?.results?.slice(0, 3)
+  const featuredMovies = await getData('movie/now_playing?page=1')
+  const filteredFeaturedMovies = getRandomSlice(featuredMovies?.results, 6)
 
   return (
     <div>
-      <Header data={topPopularMovies} />
+      <Header data={filteredFeaturedMovies} />
       <main className="mx-auto w-full max-w-[2000px] p-6">
+        <Suspense fallback={<ReelSkeleton />}>
+          <NowPlayingMovies />
+        </Suspense>
         <Suspense fallback={<ReelSkeleton />}>
           <PopularMovies />
         </Suspense>
         <Suspense fallback={<ReelSkeleton />}>
           <TopRatedMovies />
-        </Suspense>
-        <Suspense fallback={<ReelSkeleton />}>
-          <NowPlayingMovies />
         </Suspense>
         <Suspense fallback={<ReelSkeleton />}>
           <UpcomingMovies />
@@ -113,6 +115,7 @@ export default async function HomePage() {
         <Suspense fallback={<ReelSkeleton />}>
           <TopRatedTV />
         </Suspense>
+        <GenrePills />
       </main>
     </div>
   )

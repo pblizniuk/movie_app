@@ -23,7 +23,7 @@ export default async function SearchPage({
   }
 
   const data = await getData(
-    `search/multi?include_video=false&language=en-US&page=1&query=${query}&sort_by=popularity.desc`,
+    `search/multi?include_video=false&page=1&query=${query}&sort_by=popularity.desc`,
   )
 
   return (

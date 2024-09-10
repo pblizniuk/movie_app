@@ -6,22 +6,11 @@ type SearchParams = {
 }
 export default function Login({
   searchParams,
-  // onHandleSubmit,
-  // isDialog = false,
 }: {
   searchParams: SearchParams
-  // onHandleSubmit?: () => void
-  // isDialog?: boolean
 }) {
-  // const handleSubmit = async (formData: FormData) => {
-  //   if (onHandleSubmit instanceof Function) {
-  //     await onHandleSubmit()
-  //   }
-  //   await signIn(formData)
-  // }
-
   return (
-    <div className="flex w-full flex-1 flex-col justify-center gap-2 sm:max-w-md">
+    <div className="flex w-full flex-1 flex-col justify-center gap-2 px-6 sm:max-w-md">
       <form className="flex w-full flex-1 flex-col justify-center gap-2 text-foreground">
         <label className="text-md" htmlFor="email">
           Email

@@ -5,11 +5,9 @@ import getData from '@/utils/get_data'
 
 export default async function TVShow({ params: { id } }: any) {
   const movieDetails = await getData(
-    `tv/${id}?language=en-US&append_to_response=release_dates`,
+    `tv/${id}?append_to_response=release_dates`,
   )
-  const { results: similarTV } = await getData(
-    `tv/${id}/similar?language=en-US&page=1`,
-  )
+  const { results: similarTV } = await getData(`tv/${id}/similar?page=1`)
 
   if (!movieDetails) return
 

@@ -24,9 +24,7 @@ const Seasons = ({
 
   useEffect(() => {
     const getEpisodes = async () => {
-      const episodeList = await getData(
-        `tv/${showId}/season/${seasonNumber}?language=en-US`,
-      )
+      const episodeList = await getData(`tv/${showId}/season/${seasonNumber}`)
 
       console.log({ episodeList })
 

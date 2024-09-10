@@ -11,7 +11,7 @@ export default function SearchResultsDropdown({ query }: { query: string }) {
   useEffect(() => {
     const handleResults = async () => {
       const data = await getData(
-        `search/multi?include_video=false&language=en-US&page=1&query=${query}&sort_by=popularity.desc`,
+        `search/multi?include_video=false&page=1&query=${query}&sort_by=popularity.desc`,
       )
 
       setSearchResults(data)

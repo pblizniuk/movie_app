@@ -20,7 +20,7 @@ export default function DetailModal({
     if (id) {
       const getDetails = async () => {
         const titleDetails = await getData(
-          `movie/${id}?language=en-US&append_to_response=release_dates,videos,credits,images&include_image_language=en,null`,
+          `movie/${id}?append_to_response=release_dates,videos,credits,images&include_image_language=en,null`,
         )
         setDetails(titleDetails)
       }

@@ -7,7 +7,7 @@ export default async function Details({
   params: { id: number | string }
 }) {
   const titleDetails = await getData(
-    `movie/${id}?language=en-US&append_to_response=release_dates,videos,credits,images&include_image_language=en,null`,
+    `movie/${id}?append_to_response=release_dates,videos,credits,images&include_image_language=en,null`,
   )
 
   return (

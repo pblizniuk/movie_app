@@ -76,7 +76,7 @@ const TitleMeta = ({ data }: MovieData) => {
                     director: { name: string; profile_path: string },
                     index: number,
                   ) => (
-                    <>
+                    <div key={index}>
                       {director?.profile_path !== null && (
                         <Image
                           src={`https://image.tmdb.org/t/p/original${director?.profile_path}`}
@@ -90,7 +90,7 @@ const TitleMeta = ({ data }: MovieData) => {
                       <p key={index} className="font-bold">
                         {director.name}
                       </p>
-                    </>
+                    </div>
                   ),
                 )}
           </div>
