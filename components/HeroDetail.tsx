@@ -7,14 +7,19 @@ import type { MovieData } from '@/utils/types'
 import getCertification from '@/utils/helpers/getCertification'
 import UserScore from './UserScore'
 
-const HeroDetail = async ({ data }: MovieData) => {
+type HeroDetailTypes = {
+  isTV?: boolean
+} & MovieData
+
+const HeroDetail = async ({ data, isTV = false }: HeroDetailTypes) => {
   if (!data) return null
 
   const {
     backdrop_path,
     poster_path,
     id,
-    title,
+    title = '',
+    name = '',
     overview,
     genres,
     release_date,
@@ -36,8 +41,8 @@ const HeroDetail = async ({ data }: MovieData) => {
 
   return (
     <section>
-      <div className="absolute flex w-full justify-center overflow-hidden lg:h-[90vh]">
-        <HeroImage backdrop_path={backdrop_path} title={title} />
+      <div className="absolute top-0 flex w-full justify-center overflow-hidden lg:h-[90vh]">
+        <HeroImage backdrop_path={backdrop_path} title={isTV ? name : title} />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-900 from-15%"></div>
       </div>
       <div className="relative left-0 right-0 top-10">
@@ -79,7 +84,9 @@ const HeroDetail = async ({ data }: MovieData) => {
                     </div>
                   ) : null}
                 </div>
-                <h3 className="mb-2 text-3xl font-bold lg:text-6xl">{title}</h3>
+                <h3 className="mb-2 text-3xl font-bold lg:text-6xl">
+                  {isTV ? name : title}
+                </h3>
                 {tagline ? (
                   <h4 className="mb-2 text-xl lg:text-4xl">{tagline}</h4>
                 ) : null}
@@ -93,18 +100,22 @@ const HeroDetail = async ({ data }: MovieData) => {
                       </span>
                     ))}
                   </span>
-                  <span className="mx-1">⸱</span>
-                  <span>{new Date(release_date).getFullYear()}</span>
+                  {release_date && (
+                    <>
+                      <span className="mx-1">⸱</span>
+                      <span>{new Date(release_date).getFullYear()}</span>
+                    </>
+                  )}
                 </div>
                 <div className="mb-8">
-                  <Buttons id={id} trailerKey={trailerKey} />
+                  <Buttons id={id} trailerKey={trailerKey} isTV={isTV} />
                 </div>
               </div>
             </div>
             <h3 className="mb-4 text-4xl font-semibold">Summary</h3>
             <p className="mb-4 text-xl text-white/70">{overview}</p>
             <Link
-              href={`/movies/${id}/details`}
+              href={isTV ? `/tv-shows/${id}/details` : `/movies/${id}/details`}
               className="text-lg font-semibold uppercase text-lime-500"
             >
               More details

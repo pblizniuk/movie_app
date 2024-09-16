@@ -29,7 +29,7 @@ const Episodes = ({ episodes }: Episodes) => {
 
   return (
     <>
-      <div className="mb-12 grid grid-cols-5 gap-4">
+      <div className="mb-12 grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {episodes?.map((episode: any) => {
           const { id, name, overview, still_path, air_date, episode_number } =
             episode
@@ -37,7 +37,7 @@ const Episodes = ({ episodes }: Episodes) => {
 
           if (isFutureEpisode) return null
           return (
-            <div key={id} className="mb-8 flex-col gap-8 sm:flex">
+            <div key={id} className="mb-8 flex flex-col gap-4">
               <MotionDiv
                 variants={variants}
                 initial="hidden"

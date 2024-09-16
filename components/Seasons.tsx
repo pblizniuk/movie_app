@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import Episodes from '@/components/Episodes'
 import getData from '@/utils/get_data'
+import Icon from './Icons'
 
 const Seasons = ({
   seasons,
@@ -48,26 +49,17 @@ const Seasons = ({
         <button
           id="dropdownDefaultButton"
           data-dropdown-toggle="dropdown"
-          className="inline-flex min-w-64 items-center rounded bg-lime-500 px-5 py-2.5 text-lg font-semibold leading-normal text-white hover:bg-lime-600"
+          className="inline-flex min-w-64 items-center justify-between rounded bg-lime-500 px-5 py-2.5 text-lg font-semibold leading-normal text-white hover:bg-lime-600"
           type="button"
           onClick={() => setOpen(!open)}
         >
           Season {seasonNumber}{' '}
-          <svg
+          <Icon
+            name="arrow"
+            size="20"
+            color="white"
             className="ml-auto ms-3 h-2.5 w-2.5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 10 6"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="m1 1 4 4 4-4"
-            />
-          </svg>
+          />
         </button>
         <div
           id="dropdown"

@@ -26,10 +26,13 @@ const TitleMeta = ({ data }: MovieData) => {
 
   if (!data) return null
 
-  const director = credits?.crew?.filter(
+  const directorList = credits?.crew?.filter(
     (i: { job: string; name: string }) => i.job === 'Director',
   )
   const cast = credits?.cast
+
+  const directorLabel = directorList?.length > 1 ? 'Directors' : 'Director'
+  const studioLabel = production_companies?.length > 1 ? 'Studios' : 'Studio'
 
   return (
     <>
@@ -67,9 +70,9 @@ const TitleMeta = ({ data }: MovieData) => {
         <h2 className="mb-4 text-3xl font-bold">Crew:</h2>
         <div className="grid grid-cols-2 gap-4">
           <div className="rounded-md bg-stone-800/80 p-3">
-            <p className="text-xl font-bold">Director(s):</p>
-            {director &&
-              director
+            <p className="text-xl font-bold">{directorLabel}:</p>
+            {directorList &&
+              directorList
                 ?.slice(0, 4)
                 ?.map(
                   (
@@ -95,7 +98,7 @@ const TitleMeta = ({ data }: MovieData) => {
                 )}
           </div>
           <div className="rounded-md bg-stone-800/80 p-3">
-            <p className="text-xl font-bold">Studio(s):</p>
+            <p className="text-xl font-bold">{studioLabel}:</p>
             {production_companies &&
               production_companies
                 ?.slice(0, 4)

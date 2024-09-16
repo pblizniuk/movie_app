@@ -55,11 +55,13 @@ export default function WatchTrailerButton({
               />
             </button>
           </div>
-          <div className="fixed inset-0 flex items-center justify-center p-4">
+          <div className="fixed inset-0 flex h-[100vh] w-[100vw] items-center justify-center p-4">
             <iframe
+              width="100%"
+              height="auto"
               src={`https://www.youtube.com/embed/${trailerKey}`}
               allowFullScreen
-              className="h-[90vh] w-[90vw]"
+              className="h-full w-full"
             />
           </div>
         </div>

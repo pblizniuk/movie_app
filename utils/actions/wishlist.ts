@@ -14,6 +14,7 @@ export async function deleteFromWishlist(formData: FormData) {
     .delete()
     .eq('movie_id', formData.get('movie_id') as string)
     .eq('user_id', user?.id)
+
   if (error) {
     console.log(error)
     throw new Error(error.message)

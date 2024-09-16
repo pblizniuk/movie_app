@@ -36,7 +36,8 @@ export type MovieData = {
 }
 export type Movie = {
   id: number | string
-  title: string
+  title?: string
+  name?: string
   tagline: string
   backdrop_path: string
   poster_path: string

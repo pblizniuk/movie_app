@@ -2,6 +2,7 @@ import { Outfit } from 'next/font/google'
 import './globals.css'
 import Nav from '@/components/Nav'
 import { Rock_Salt } from 'next/font/google'
+import { Toaster } from 'react-hot-toast'
 
 const rockSalt = Rock_Salt({
   weight: ['400'],
@@ -34,6 +35,7 @@ export default function RootLayout({
       className={`${outfit.className} ${rockSalt.variable} max-w-full overflow-x-hidden antialiased`}
     >
       <body className="relative grid min-h-screen grid-cols-1 grid-rows-[auto_1fr_auto] overflow-x-clip bg-stone-200 text-foreground dark:bg-stone-900">
+        <Toaster position="bottom-center" />
         <Nav />
         {children}
         <footer className="mt-16 flex w-full justify-center border-t border-t-foreground/10 p-8 text-center text-sm">

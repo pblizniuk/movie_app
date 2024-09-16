@@ -1,10 +1,11 @@
-import movies from './movies'
-import tv_shows from './tv_shows'
-import wishlist from './wishlist'
+import arrow from './arrow'
 import cross from './cross'
-import user from './user'
-import spinner from './spinner'
 import loupe from './loupe'
+import movies from './movies'
+import spinner from './spinner'
+import tv_shows from './tv_shows'
+import user from './user'
+import wishlist from './wishlist'
 
 export type IconProps = {
   name: string
@@ -26,13 +27,14 @@ const Icon = (props: IconProps) => {
 
   return (
     <>
-      {name === 'movies' && movies({ ...props, ...sizing })}
-      {name === 'tv_shows' && tv_shows({ ...props, ...sizing })}
-      {name === 'wishlist' && wishlist({ ...props, ...sizing })}
+      {name === 'arrow' && arrow({ ...props, ...sizing })}
       {name === 'cross' && cross({ ...props, ...sizing })}
-      {name === 'user' && user({ ...props, ...sizing })}
-      {name === 'spinner' && spinner({ ...props, ...sizing })}
       {name === 'loupe' && loupe({ ...props, ...sizing })}
+      {name === 'movies' && movies({ ...props, ...sizing })}
+      {name === 'spinner' && spinner({ ...props, ...sizing })}
+      {name === 'tv_shows' && tv_shows({ ...props, ...sizing })}
+      {name === 'user' && user({ ...props, ...sizing })}
+      {name === 'wishlist' && wishlist({ ...props, ...sizing })}
     </>
   )
 }
