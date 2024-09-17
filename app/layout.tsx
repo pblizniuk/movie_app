@@ -34,7 +34,7 @@ export default function RootLayout({
       lang="en"
       className={`${outfit.className} ${rockSalt.variable} max-w-full overflow-x-hidden antialiased`}
     >
-      <body className="relative grid min-h-screen grid-cols-1 grid-rows-[auto_1fr_auto] overflow-x-clip bg-stone-200 text-foreground dark:bg-stone-900">
+      <body className="relative grid min-h-screen grid-cols-1 grid-rows-[auto_1fr_auto] overflow-x-clip bg-stone-900 text-foreground">
         <Toaster position="bottom-center" />
         <Nav />
         {children}

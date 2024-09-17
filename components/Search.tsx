@@ -25,7 +25,9 @@ export default function Search({
     const params = new URLSearchParams(searchParams)
 
     // clear the search bar if no query
-    params?.get('query') === null && ref.current && ref.current.reset()
+    if (params?.get('query') === null && ref.current) {
+      ref.current.reset()
+    }
 
     const handleOutSideClick = (e: MouseEvent) => {
       if (!ref.current?.contains(e.target as Node)) {

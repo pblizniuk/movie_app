@@ -2,6 +2,7 @@
 import { useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import Auth from '@/components/Auth'
+import { MotionDiv } from '@/components/MotionDiv'
 
 export default function LoginModal({
   searchParams,
@@ -24,20 +25,33 @@ export default function LoginModal({
     router.back()
   }
 
+  const bgVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  }
+
   return (
     <>
-      <div
+      <MotionDiv
         onClick={() => handleClose()}
-        className="absolute inset-0 z-[999] flex h-full min-h-[100vh] w-full min-w-[100vw] items-center justify-center overflow-y-auto bg-stone-900/90"
+        variants={bgVariants}
+        initial="hidden"
+        animate="visible"
+        transition={{
+          duration: 0.5,
+          ease: [0.43, 0.13, 0.23, 0.96],
+        }}
+        viewport={{ amount: 0 }}
+        className="absolute inset-0 z-[998] flex h-full min-h-[100vh] w-full min-w-[100vw] items-center justify-center overflow-y-auto bg-stone-900/90"
       />
       <dialog
         ref={dialogRef}
         onClose={() => handleClose()}
-        className="p:8 fixed inset-0 bottom-0 left-0 right-0 top-0 z-[999] m-auto flex h-full w-full flex-col items-center justify-center overflow-y-auto bg-stone-900 md:min-h-[50vh] md:w-[50vw] lg:p-24"
+        className="ove fixed inset-0 bottom-0 left-0 right-0 top-0 z-[999] m-auto flex h-[100vh] w-[80vw] max-w-[600px] flex-col overflow-y-auto bg-stone-900 p-24"
       >
         <button
           onClick={() => handleClose()}
-          className="absolute -top-2 right-0 pr-2 text-6xl text-lime-500"
+          className="absolute right-3 top-2 p-3 text-6xl text-lime-500"
         >
           &times;
         </button>
