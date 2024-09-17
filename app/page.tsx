@@ -96,7 +96,7 @@ export default async function HomePage() {
   return (
     <div>
       <Header data={filteredFeaturedMovies} />
-      <main className="mx-auto w-full max-w-[2000px] p-6">
+      <main className="mx-auto w-full max-w-[2000px] p-2 pt-6 md:p-6">
         <Suspense fallback={<ReelSkeleton />}>
           <NowPlayingMovies />
         </Suspense>

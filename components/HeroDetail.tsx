@@ -41,14 +41,14 @@ const HeroDetail = async ({ data, isTV = false }: HeroDetailTypes) => {
 
   return (
     <section>
-      <div className="absolute top-0 flex w-full justify-center overflow-hidden lg:h-[90vh]">
+      <div className="absolute top-0 flex min-h-[70vh] w-full justify-center overflow-hidden lg:h-[90vh]">
         <HeroImage backdrop_path={backdrop_path} title={isTV ? name : title} />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-900 from-15%"></div>
       </div>
       <div className="relative left-0 right-0 top-10">
         <div className="mx-auto flex w-full max-w-[2000px] flex-col justify-end lg:min-h-[90vh]">
-          <div className="my-10 max-w-5xl px-6 lg:my-32">
-            <div className="mb-8 items-center gap-10 md:flex">
+          <div className="mt-20 max-w-5xl px-6 md:my-10 lg:my-32">
+            <div className="mb-20 items-center gap-10 md:mb-8 md:flex">
               <MotionDiv
                 className="hidden md:block"
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -112,7 +112,7 @@ const HeroDetail = async ({ data, isTV = false }: HeroDetailTypes) => {
                 </div>
               </div>
             </div>
-            <h3 className="mb-4 text-4xl font-semibold">Summary</h3>
+            <h3 className="mb-4 text-3xl font-semibold md:text-4xl">Summary</h3>
             <p className="mb-4 text-xl text-white/70">{overview}</p>
             <Link
               href={isTV ? `/tv-shows/${id}/details` : `/movies/${id}/details`}

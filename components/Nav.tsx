@@ -11,7 +11,7 @@ export default function Nav() {
     <>
       <div className="sticky top-0 z-50 -mb-[56px] w-full bg-stone-900/70 py-2 backdrop-blur-md">
         <div className="mx-auto grid max-w-[2000px] grid-cols-[auto_1fr_auto] content-center justify-center px-3 align-middle">
-          <Link href="/" className="mr-10 mt-1">
+          <Link href="/" className="mr-4 mt-1 md:mr-10">
             <div className="logo font-rock-salt text-xl font-extrabold text-lime-500">
               Screen<span className="text-foreground/80">Bits</span>
             </div>

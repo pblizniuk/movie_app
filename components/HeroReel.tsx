@@ -76,8 +76,10 @@ const HeroReel: React.FC<HeroReelProps> = ({ data }) => {
                 </div>
                 <div className="absolute inset-0 z-10 mx-auto max-w-[2000px] px-6">
                   <div className="flex h-full max-w-screen-md flex-col justify-center">
-                    <h3 className="mb-8 text-6xl font-bold">{title}</h3>
-                    <p className="mb-8 text-xl">{overview}</p>
+                    <h3 className="mt:16 mb-8 text-3xl font-bold md:text-6xl">
+                      {title}
+                    </h3>
+                    <p className="mb-8 line-clamp-4 text-xl">{overview}</p>
                     <Buttons id={id}>
                       {/* TODO: need to figure out how to get wishlist status on initial render, as WishListButton is a server component passed to a client component */}
                       {/* <WishlistButton movie_id={id} /> */}

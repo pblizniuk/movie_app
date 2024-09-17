@@ -39,9 +39,14 @@ const Reel: React.FC<ReelProps> = ({ data, isTV = false, title, link }) => {
   return (
     <>
       <div className="flex items-center justify-between">
-        {title && <h3 className="mb-3 text-3xl font-bold">{title}</h3>}
+        {title && (
+          <h3 className="mb-3 text-2xl font-bold md:text-3xl">{title}</h3>
+        )}
         {link && (
-          <Link href={link} className="text-md mb-3 mr-4 font-bold uppercase">
+          <Link
+            href={link}
+            className="text-md mb-3 font-bold uppercase md:mr-4"
+          >
             View more
           </Link>
         )}
