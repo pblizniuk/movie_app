@@ -115,3 +115,25 @@
   scrollbar-color: var(--swiper-theme-color-alt) transparent;
   scrollbar-width: auto;
 }
+
+// zoom bg
+
+.custom-zoom [data-rmiz-modal-overlay],
+.custom-zoom [data-rmiz-modal-img] {
+  transition-duration: 0.3s;
+  transition-timing-function: linear;
+}
+.custom-zoom [data-rmiz-modal-overlay='hidden'] {
+  background-color: rgb(56, 58, 89, 0);
+}
+.custom-zoom [data-rmiz-modal-overlay='visible'] {
+  background-color: rgb(28 25 23);
+}
+.custom-zoom [data-rmiz-btn-unzoom] {
+  background-color: var(--swiper-theme-color-alt);
+  color: #000;
+}
+.custom-zoom [data-rmiz-btn-unzoom]:focus-visible {
+  outline-offset: 0.4rem;
+  outline: 0.2rem solid var(--swiper-theme-color-alt);
+}

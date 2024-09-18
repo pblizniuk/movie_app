@@ -54,7 +54,6 @@ export default function DetailModal({
       />
       <dialog
         ref={dialogRef}
-        onClose={() => handleClose()}
         className="fixed inset-0 bottom-0 left-0 right-0 top-0 z-[999] m-auto flex h-[100vh] w-[80vw] flex-col overflow-y-auto bg-stone-900 p-24"
       >
         <button

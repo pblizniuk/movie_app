@@ -1,6 +1,8 @@
 import type { ImagesObject } from '@/utils/types'
 import Image from 'next/image'
 import { MotionDiv } from '@/components/MotionDiv'
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
 
 const TitleDetailImages = ({ images }: ImagesObject) => {
   if (!images) return null
@@ -55,14 +57,16 @@ const TitleDetailImages = ({ images }: ImagesObject) => {
                     }}
                     viewport={{ amount: 0 }}
                   >
-                    <Image
-                      src={`https://image.tmdb.org/t/p/original${item.file_path}`}
-                      alt={item.file_path}
-                      width={group?.width}
-                      height={group?.height}
-                      className="min-w-48 snap-center rounded-md shadow-sm"
-                      loading="lazy"
-                    />
+                    <Zoom classDialog="custom-zoom">
+                      <Image
+                        src={`https://image.tmdb.org/t/p/original${item.file_path}`}
+                        alt={item.file_path}
+                        width={group?.width}
+                        height={group?.height}
+                        className="min-w-48 snap-center rounded-md shadow-sm"
+                        loading="lazy"
+                      />
+                    </Zoom>
                   </MotionDiv>
                 ))}
               </div>
