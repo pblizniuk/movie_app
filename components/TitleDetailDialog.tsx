@@ -1,25 +1,17 @@
 'use client'
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { useRouter } from 'next/navigation'
-import Auth from '@/components/Auth'
+import TitleMeta from '@/components/TitleMeta'
 import { MotionDiv } from '@/components/MotionDiv'
+import type { Movie } from '@/utils/types'
 
-export default function LoginModal({
-  searchParams,
+export default function TitleDetailDialog({
+  titleDetails,
 }: {
-  searchParams: { message: string; loggedIn: string }
+  titleDetails: Movie
 }) {
   const router = useRouter()
   const dialogRef = useRef<HTMLDialogElement>(null)
-  const { loggedIn } = searchParams
-
-  useEffect(() => {
-    dialogRef.current?.showModal()
-
-    if (loggedIn === 'true') {
-      dialogRef.current?.close()
-    }
-  }, [loggedIn])
 
   const handleClose = () => {
     router.back()
@@ -46,8 +38,7 @@ export default function LoginModal({
       />
       <dialog
         ref={dialogRef}
-        onClose={() => handleClose()}
-        className="fixed inset-0 bottom-0 left-0 right-0 top-0 z-[999] m-auto flex h-[100vh] w-full max-w-[600px] flex-col overflow-y-auto bg-stone-900 p-3 md:w-[80vw] lg:p-24"
+        className="fixed inset-0 bottom-0 left-0 right-0 top-0 z-[999] m-auto flex h-[100vh] w-full flex-col overflow-y-auto bg-stone-900 p-3 lg:w-[80vw] lg:p-24"
       >
         <button
           onClick={() => handleClose()}
@@ -55,14 +46,7 @@ export default function LoginModal({
         >
           &times;
         </button>
-        <h3 className="mb-4 block px-6 py-10 text-3xl font-semibold text-white">
-          Welcome! Sign in or create your free account.
-        </h3>
-        <Auth
-          // onHandleSubmit={handleSubmit}
-          // isDialog
-          searchParams={searchParams}
-        />
+        <TitleMeta data={titleDetails} />
       </dialog>
     </>
   )

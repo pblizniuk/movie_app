@@ -137,3 +137,7 @@
   outline-offset: 0.4rem;
   outline: 0.2rem solid var(--swiper-theme-color-alt);
 }
+
+.custom-zoom img {
+  border-radius: 6px;
+}

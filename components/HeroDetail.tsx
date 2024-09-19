@@ -45,9 +45,9 @@ const HeroDetail = async ({ data, isTV = false }: HeroDetailTypes) => {
         <HeroImage backdrop_path={backdrop_path} title={isTV ? name : title} />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-900 from-15%"></div>
       </div>
-      <div className="relative left-0 right-0 top-10">
+      <div className="relative left-0 right-0 top-10 mb-28">
         <div className="mx-auto flex w-full max-w-[2000px] flex-col justify-end lg:min-h-[90vh]">
-          <div className="mt-20 max-w-5xl px-6 md:my-10 lg:my-32">
+          <div className="mt-20 max-w-5xl px-6">
             <div className="mb-20 items-center gap-10 md:mb-8 md:flex">
               <MotionDiv
                 className="hidden md:block"

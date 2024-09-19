@@ -24,7 +24,6 @@ type Episodes = {
 }
 
 const Episodes = ({ episodes }: Episodes) => {
-  console.log({ episodes })
   if (!episodes?.length) return null
 
   return (

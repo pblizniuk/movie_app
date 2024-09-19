@@ -21,13 +21,9 @@ const Seasons = ({
   const [open, setOpen] = useState(false)
   const [episodes, setEpisodes] = useState([])
 
-  console.log({ episodes })
-
   useEffect(() => {
     const getEpisodes = async () => {
       const episodeList = await getData(`tv/${showId}/season/${seasonNumber}`)
-
-      console.log({ episodeList })
 
       setEpisodes(episodeList?.episodes)
     }
