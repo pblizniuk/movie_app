@@ -118,7 +118,9 @@ const HeroDetail = async ({ data, isTV = false }: HeroDetailTypes) => {
               </div>
             </div>
             <h3 className="mb-4 text-3xl font-semibold md:text-4xl">Summary</h3>
-            <p className="mb-4 text-xl text-white/70">{overview}</p>
+            <p className="mb-4 line-clamp-6 text-xl text-white/70">
+              {overview}
+            </p>
             <Link
               href={isTV ? `/tv-shows/${id}/details` : `/movies/${id}/details`}
               className="text-lg font-semibold uppercase text-lime-500"

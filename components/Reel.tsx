@@ -36,6 +36,8 @@ interface ReelProps {
 }
 
 const Reel: React.FC<ReelProps> = ({ data, isTV = false, title, link }) => {
+  if (data?.length < 1) return null
+
   return (
     <>
       <div className="flex items-center justify-between">
