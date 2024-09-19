@@ -23,9 +23,9 @@ const Seasons = ({
 
   useEffect(() => {
     const getEpisodes = async () => {
-      const episodeList = await getData(`tv/${showId}/season/${seasonNumber}`)
+      const seasonData = await getData(`tv/${showId}/season/${seasonNumber}`)
 
-      setEpisodes(episodeList?.episodes)
+      setEpisodes(seasonData?.episodes)
     }
 
     getEpisodes()

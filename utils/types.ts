@@ -115,3 +115,20 @@ export type Season = {
   season_number: number
   vote_average: number
 }
+
+export type Episodes = {
+  episodes: {
+    id: number
+    name: string
+    overview: string
+    still_path: string
+    air_date: string
+    episode_number: number
+    runtime: number
+    vote_average: number
+    vote_count: number
+    season_number: number
+    production_code: string
+    show_id: number
+  }[]
+}
