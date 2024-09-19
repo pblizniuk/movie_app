@@ -46,7 +46,7 @@ export default function RootLayout({
             >
               Screen<span className="text-foreground/80">Bits </span>
             </span>
-            Movie Showcase App by Paul Blizniuk
+            Trailer App by Paul Blizniuk
           </p>
         </footer>
         {modal}

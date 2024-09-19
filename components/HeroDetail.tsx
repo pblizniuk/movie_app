@@ -42,7 +42,12 @@ const HeroDetail = async ({ data, isTV = false }: HeroDetailTypes) => {
   return (
     <section>
       <div className="absolute top-0 flex min-h-[70vh] w-full justify-center overflow-hidden lg:h-[90vh]">
-        <HeroImage backdrop_path={backdrop_path} title={isTV ? name : title} />
+        <HeroImage
+          backdrop_path={backdrop_path}
+          title={isTV ? name : title}
+          deferred
+          animated
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-900 from-15%"></div>
       </div>
       <div className="relative left-0 right-0 top-10 mb-28">

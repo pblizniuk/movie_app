@@ -38,6 +38,7 @@ const TitleDetailImages = ({ images }: ImagesObject) => {
     <>
       {imageArray?.map((group, index) => (
         <div className="my-8" key={index}>
+          <div className="my-8 w-full bg-gradient-to-r from-transparent via-foreground/10 to-transparent p-[1px]" />
           {group?.gallery?.length > 0 && (
             <h2 className="mb-4 text-3xl font-bold">{group.title}</h2>
           )}
@@ -63,7 +64,7 @@ const TitleDetailImages = ({ images }: ImagesObject) => {
                         alt={item.file_path}
                         width={group?.width}
                         height={group?.height}
-                        className="min-w-48 snap-center rounded-md shadow-sm"
+                        className="min-w-60 snap-center rounded-md shadow-sm"
                         loading="lazy"
                       />
                     </Zoom>

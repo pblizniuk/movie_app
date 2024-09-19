@@ -34,7 +34,7 @@ const CastReel = ({ cast }: any) => {
                   alt={actor?.name}
                   width={384}
                   height={576}
-                  className="min-w-48 snap-center rounded-md shadow-sm"
+                  className="min-w-40 snap-center rounded-md shadow-sm"
                   loading="lazy"
                 />
                 <p className="font-bold">{actor?.name}</p>

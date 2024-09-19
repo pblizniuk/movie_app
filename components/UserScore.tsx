@@ -16,7 +16,8 @@ const UserScore = ({
 
   let classes = ''
   if (size === 'large') {
-    classes = 'text-3xl  h-36 w-36'
+    classes =
+      'text-xs md:text-2xl lg:text-3xl h-14 w-14  md:h-24 md:w-24 lg:h-36 lg:w-36'
   } else if (size === 'medium') {
     classes = 'text-2xl h-24 w-24'
   } else {

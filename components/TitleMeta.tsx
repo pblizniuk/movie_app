@@ -4,10 +4,11 @@ import { MovieData } from '@/utils/types'
 import TitleDetailImages from '@/components/TitleDetailImages'
 import CastReel from '@/components/CastReel'
 import Image from 'next/image'
+import HeroImage from './HeroImage'
 
 const TitleMeta = ({ data }: MovieData) => {
   const {
-    title,
+    title = '',
     release_dates,
     overview,
     tagline,
@@ -17,6 +18,7 @@ const TitleMeta = ({ data }: MovieData) => {
     images,
     runtime,
     genres,
+    backdrop_path,
   } = data
 
   const hours = Math.floor(runtime / 60)
@@ -36,7 +38,11 @@ const TitleMeta = ({ data }: MovieData) => {
 
   return (
     <>
-      <div className="modal-details my-auto text-white">
+      <div className="absolute left-0 top-0 -z-10 flex min-h-[70vh] w-full justify-center overflow-hidden lg:h-[90vh]">
+        <HeroImage backdrop_path={backdrop_path} title={title} />
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-900 from-0% to-stone-900/50"></div>
+      </div>
+      <div className="modal-details relative z-10 my-auto text-white">
         <div className="mb-3 flex items-center gap-5">
           <UserScore vote_average={vote_average} size={'large'} />
           <span className="text-lg font-bold">User Score</span>
@@ -65,11 +71,11 @@ const TitleMeta = ({ data }: MovieData) => {
           {title}
         </h2>
         {tagline && <h4 className="mb-4 text-xl lg:text-4xl">{tagline}</h4>}
-        <p className="mb-4 max-w-[70%] text-xl text-white/70">{overview}</p>
+        <p className="mb-4 text-xl text-white/70 md:max-w-[70%]">{overview}</p>
         <div className="my-8 w-full bg-gradient-to-r from-transparent via-foreground/10 to-transparent p-[1px]" />
         <h2 className="mb-4 text-3xl font-bold">Crew:</h2>
         <div className="grid grid-cols-2 gap-4">
-          <div className="rounded-md bg-stone-800/80 p-3">
+          <div className="rounded-md bg-stone-800/60 p-3">
             <p className="text-xl font-bold">{directorLabel}:</p>
             {directorList &&
               directorList
@@ -97,7 +103,7 @@ const TitleMeta = ({ data }: MovieData) => {
                   ),
                 )}
           </div>
-          <div className="rounded-md bg-stone-800/80 p-3">
+          <div className="rounded-md bg-stone-800/60 p-3">
             <p className="text-xl font-bold">{studioLabel}:</p>
             {production_companies &&
               production_companies
@@ -107,6 +113,7 @@ const TitleMeta = ({ data }: MovieData) => {
                 ))}
           </div>
         </div>
+        <div className="my-8 w-full bg-gradient-to-r from-transparent via-foreground/10 to-transparent p-[1px]" />
         <CastReel cast={cast} />
         <div>
           <TitleDetailImages images={images} />
