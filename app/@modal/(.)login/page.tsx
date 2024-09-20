@@ -15,9 +15,13 @@ export default function LoginModal({
 
   useEffect(() => {
     dialogRef.current?.showModal()
+    document.body.classList.add('overflow-hidden')
 
     if (loggedIn === 'true') {
       dialogRef.current?.close()
+    }
+    return () => {
+      document.body.classList.remove('overflow-hidden')
     }
   }, [loggedIn])
 

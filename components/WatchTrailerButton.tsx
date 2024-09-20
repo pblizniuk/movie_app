@@ -1,6 +1,5 @@
 'use client'
 import { useState } from 'react'
-import Icon from './Icons'
 export default function WatchTrailerButton({
   trailerKey,
 }: {
@@ -8,22 +7,8 @@ export default function WatchTrailerButton({
   trailerKey: string
 }) {
   const [dialogOpen, setDialogOpen] = useState(false)
-  // const videoJsOptions = {
-  //   techOrder: ['youtube'],
-  //   autoplay: false,
-  //   controls: true,
-  //   sources: [
-  //     {
-  //       src: `https://www.youtube.com/watch?v=${trailerKey}`,
-  //       type: 'video/youtube',
-  //     },
-  //   ],
-  // }
 
   const onPlayVideoClick = () => {
-    // Do something
-    // videoJsOptions.autoplay = true
-    // videoJsOptions.controls = true
     setDialogOpen(true)
   }
 
@@ -43,17 +28,6 @@ export default function WatchTrailerButton({
       {dialogOpen && (
         <div className="fixed inset-0 z-[99999] bg-black bg-opacity-80 transition-opacity">
           <div>
-            {/* <button
-              type="button"
-              onClick={() => setDialogOpen(false)}
-              className="absolute right-0 top-0 z-[99999] cursor-default"
-            >
-              <Icon
-                className="m-6 h-6 w-6 rotate-45 cursor-pointer text-white"
-                name="cross"
-                size="40"
-              />
-            </button> */}
             <button
               onClick={() => setDialogOpen(false)}
               className="fixed right-3 top-2 z-[999] p-3 text-6xl text-lime-500"
@@ -73,14 +47,6 @@ export default function WatchTrailerButton({
             </div>
           </div>
         </div>
-
-        //   <Player {...videoJsOptions} />
-        //   {/* <iframe
-        //       src={`https://www.youtube.com/embed/${trailerKey}`}
-        //       frameborder="0"
-        //       allowfullscreen
-        //     /> */}
-        // </div>
       )}
     </>
   )
