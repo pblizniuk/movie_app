@@ -8,7 +8,7 @@ export default async function Page() {
       <MovieGrid
         title="Top Rated Movies"
         data={movies?.results}
-        pagingUrl="movie/upcoming?page="
+        pagingUrl="movie/top_rated?page="
       />
     </main>
   )

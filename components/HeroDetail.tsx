@@ -4,7 +4,10 @@ import HeroImage from '@/components/HeroImage'
 import Link from 'next/link'
 import { MotionDiv } from '@/components/MotionDiv'
 import type { MovieData } from '@/utils/types'
-import getCertification from '@/utils/helpers/getCertification'
+import {
+  getCertification,
+  getTVContentRating,
+} from '@/utils/helpers/getCertification'
 import UserScore from './UserScore'
 
 type HeroDetailTypes = {
@@ -16,6 +19,7 @@ const HeroDetail = async ({ data, isTV = false }: HeroDetailTypes) => {
 
   const {
     backdrop_path,
+    content_ratings,
     poster_path,
     id,
     title = '',
@@ -31,7 +35,8 @@ const HeroDetail = async ({ data, isTV = false }: HeroDetailTypes) => {
   } = data
   const hours = Math.floor(runtime / 60)
   const minutes = runtime % 60
-  const parentRating = getCertification(release_dates)
+  const parentRating = release_dates && getCertification(release_dates)
+  const tvRating = content_ratings && getTVContentRating(content_ratings)
   const officialTrailer = videos?.results?.filter(
     (video) => video?.type === 'Trailer' && video?.official === true,
   )
@@ -72,9 +77,9 @@ const HeroDetail = async ({ data, isTV = false }: HeroDetailTypes) => {
               </MotionDiv>
               <div>
                 <div className="mb-3 flex items-center gap-5">
-                  {parentRating ? (
+                  {parentRating || tvRating ? (
                     <div className="rounded-sm bg-lime-500 px-2 py-1 font-bold text-white">
-                      {parentRating}
+                      {parentRating || tvRating}
                     </div>
                   ) : null}
                   {runtime ? (

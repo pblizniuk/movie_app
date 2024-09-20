@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${outfit.className} ${rockSalt.variable} max-w-full overflow-x-hidden antialiased`}
+      className={`${outfit.className} ${rockSalt.variable} max-w-full antialiased`}
     >
       <body className="relative grid min-h-screen grid-cols-1 grid-rows-[auto_1fr_auto] overflow-x-clip bg-stone-900 text-foreground">
         <Toaster position="bottom-center" />

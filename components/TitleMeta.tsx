@@ -1,4 +1,7 @@
-import getCertification from '@/utils/helpers/getCertification'
+import {
+  getCertification,
+  getTVContentRating,
+} from '@/utils/helpers/getCertification'
 import UserScore from '@/components/UserScore'
 import { MovieData } from '@/utils/types'
 import TitleDetailImages from '@/components/TitleDetailImages'
@@ -9,7 +12,9 @@ import HeroImage from './HeroImage'
 const TitleMeta = ({ data }: MovieData) => {
   const {
     title = '',
+    name = '',
     release_dates,
+    content_ratings,
     overview,
     tagline,
     production_companies,
@@ -25,6 +30,7 @@ const TitleMeta = ({ data }: MovieData) => {
   const minutes = runtime % 60
 
   const parentRating = getCertification(release_dates)
+  const tvRating = content_ratings && getTVContentRating(content_ratings)
 
   if (!data) return null
 
@@ -48,11 +54,11 @@ const TitleMeta = ({ data }: MovieData) => {
           <span className="text-lg font-bold">User Score</span>
         </div>
         <div className="mb-3 flex items-center gap-5">
-          {parentRating && (
+          {parentRating || tvRating ? (
             <div className="rounded-sm bg-lime-500 px-2 py-1 font-bold text-white">
-              {parentRating}
+              {parentRating || tvRating}
             </div>
-          )}
+          ) : null}
           {runtime && (
             <div className="font-bold">
               {hours}h {minutes} min
@@ -68,7 +74,7 @@ const TitleMeta = ({ data }: MovieData) => {
           </span>
         </div>
         <h2 className="mb-4 max-w-[70%] text-3xl font-bold lg:text-6xl">
-          {title}
+          {title || name}
         </h2>
         {tagline && <h4 className="mb-4 text-xl lg:text-4xl">{tagline}</h4>}
         <p className="mb-4 text-xl text-white/70">{overview}</p>
@@ -76,10 +82,10 @@ const TitleMeta = ({ data }: MovieData) => {
         <h2 className="mb-4 text-3xl font-bold">Cast & Crew:</h2>
         <CastReel cast={cast} />
         <div className="grid grid-cols-2 gap-4">
-          <div className="rounded-md bg-stone-800/60 p-3">
-            <p className="text-xl font-bold">{directorLabel}:</p>
-            {directorList &&
-              directorList
+          {directorList?.length > 0 && (
+            <div className="rounded-md bg-stone-800/60 p-3">
+              <p className="text-xl font-bold">{directorLabel}:</p>
+              {directorList
                 ?.slice(0, 4)
                 ?.map(
                   (
@@ -103,7 +109,8 @@ const TitleMeta = ({ data }: MovieData) => {
                     </div>
                   ),
                 )}
-          </div>
+            </div>
+          )}
           <div className="rounded-md bg-stone-800/60 p-3">
             <p className="text-xl font-bold">{studioLabel}:</p>
             {production_companies &&

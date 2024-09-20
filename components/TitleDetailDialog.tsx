@@ -1,5 +1,5 @@
 'use client'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import TitleMeta from '@/components/TitleMeta'
 import { MotionDiv } from '@/components/MotionDiv'
@@ -12,6 +12,14 @@ export default function TitleDetailDialog({
 }) {
   const router = useRouter()
   const dialogRef = useRef<HTMLDialogElement>(null)
+
+  useEffect(() => {
+    document.body.classList.add('overflow-hidden')
+
+    return () => {
+      document.body.classList.remove('overflow-hidden')
+    }
+  }, [])
 
   const handleClose = () => {
     router.back()

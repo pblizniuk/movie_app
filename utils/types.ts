@@ -45,6 +45,7 @@ export type Movie = {
   genres: { id: number; name: string }[]
   release_date: string
   release_dates: ReleaseDates
+  content_ratings: ContentRatings
   credits: {
     cast: {
       name: string
@@ -78,6 +79,10 @@ export type Movie = {
       key: string
     }[]
   }
+}
+
+export type ContentRatings = {
+  results: { iso_3166_1: string; rating: string }[]
 }
 
 export type Images = {

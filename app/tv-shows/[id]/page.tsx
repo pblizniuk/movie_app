@@ -5,7 +5,7 @@ import getData from '@/utils/get_data'
 
 export default async function TVShow({ params: { id } }: any) {
   const titleDetails = await getData(
-    `tv/${id}?append_to_response=release_dates`,
+    `tv/${id}?append_to_response=content_ratings`,
   )
   const { results: similarTV } = await getData(
     `tv/${id}/recommendations?page=1`,
