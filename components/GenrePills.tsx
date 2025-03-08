@@ -2,7 +2,7 @@ import getData from '@/utils/get_data'
 import Link from 'next/link'
 
 const GenrePills = async () => {
-  const { genres } = await getData('genre/movie/list')
+  const { genres } = await getData('genre/movie/list?language=en')
 
   if (!genres) return
 

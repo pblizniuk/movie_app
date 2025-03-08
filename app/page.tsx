@@ -18,11 +18,11 @@ async function PopularMovies() {
   )
 }
 async function NowPlayingMovies() {
-  const data = await getData('movie/now_playing?page=1')
+  const nowPlayingData = await getData('movie/now_playing?page=1')
   return (
     <>
       <Reel
-        data={data?.results}
+        data={nowPlayingData?.results}
         link="movies/now-in-theaters"
         title="Now Playing"
       />
@@ -32,11 +32,11 @@ async function NowPlayingMovies() {
 }
 
 async function TopRatedMovies() {
-  const data = await getData('movie/top_rated?page=1')
+  const topRatedData = await getData('movie/top_rated?page=1')
   return (
     <>
       <Reel
-        data={data?.results}
+        data={topRatedData?.results}
         title="Top Rated Movies"
         link="movies/top-rated"
       />
@@ -46,11 +46,11 @@ async function TopRatedMovies() {
 }
 
 async function UpcomingMovies() {
-  const data = await getData('movie/upcoming?page=1')
+  const upcomingData = await getData('movie/upcoming?page=1')
   return (
     <>
       <Reel
-        data={data?.results}
+        data={upcomingData?.results}
         title="Coming Soon"
         link="movies/coming-soon"
       />
@@ -60,11 +60,11 @@ async function UpcomingMovies() {
 }
 
 async function PopularTV() {
-  const data = await getData('tv/popular?page=1')
+  const popularData = await getData('tv/popular?page=1')
   return (
     <>
       <Reel
-        data={data?.results}
+        data={popularData?.results}
         isTV
         title="Popular TV"
         link="tv-shows/popular"
@@ -75,11 +75,11 @@ async function PopularTV() {
 }
 
 async function TopRatedTV() {
-  const data = await getData('tv/top_rated?page=1')
+  const topRatedTvData = await getData('tv/top_rated?page=1')
   return (
     <>
       <Reel
-        data={data?.results}
+        data={topRatedTvData?.results}
         isTV
         title="Top Rated TV Shows"
         link="tv-shows/top-rated"
@@ -91,8 +91,9 @@ async function TopRatedTV() {
 
 export default async function HomePage() {
   const featuredMovies = await getData('movie/now_playing?page=1')
-  const filteredFeaturedMovies = getRandomSlice(featuredMovies?.results, 6)
+  const filteredFeaturedMovies = featuredMovies?.results.slice(0, 5)
 
+  console.log(filteredFeaturedMovies)
   return (
     <div>
       <Header data={filteredFeaturedMovies} />

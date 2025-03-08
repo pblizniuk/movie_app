@@ -7,6 +7,7 @@ export default async function MovieGrid({
   data,
   isTV = false,
   pagingUrl = '',
+  total_pages,
 }: MovieGridTypes) {
   return (
     <div>
@@ -25,7 +26,7 @@ export default async function MovieGrid({
             />
           )
         })}
-        <LoadMore pagingUrl={pagingUrl} isTV={isTV} />
+        <LoadMore pagingUrl={pagingUrl} isTV={isTV} total_pages={total_pages} />
       </div>
     </div>
   )

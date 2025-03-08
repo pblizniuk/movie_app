@@ -5,6 +5,7 @@ export default async function getData(path: string) {
       accept: 'application/json',
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
     },
+    next: { revalidate: 60 },
   }
 
   path = path.replace('?', '?include_adult=false&region=US&language=en-US&')

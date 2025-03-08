@@ -10,9 +10,11 @@ import { MovieTileProps } from '@/utils/types'
 export default function LoadMore({
   pagingUrl,
   isTV = false,
+  total_pages,
 }: {
   pagingUrl: string
   isTV?: boolean
+  total_pages: number
 }) {
   const [data, setData] = useState<MovieTileProps[]>([])
   const [pageNumber, setPageNumber] = useState(2) // always start from page 2
@@ -23,7 +25,7 @@ export default function LoadMore({
   })
 
   useEffect(() => {
-    if (inView) {
+    if (inView && pageNumber <= total_pages) {
       setLoading(true)
       getData(`${pagingUrl}${pageNumber}`).then(({ results, page }) => {
         setPageNumber(page + 1)
@@ -31,7 +33,7 @@ export default function LoadMore({
         setLoading(false)
       })
     }
-  }, [inView, pageNumber, pagingUrl, data])
+  }, [inView, pageNumber, pagingUrl, data, total_pages])
 
   return (
     <>

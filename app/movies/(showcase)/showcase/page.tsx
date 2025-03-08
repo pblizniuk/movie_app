@@ -5,12 +5,14 @@ export default async function Page() {
   const movies = await getData(
     'discover/movie?include_video=false&sort_by=popularity.desc&page=1',
   )
+  const { total_pages, results } = movies
   return (
     <main className="mx-auto mt-36 w-full max-w-[2000px] px-6">
       <MovieGrid
         title="Movie Showcase"
-        data={movies?.results}
+        data={results}
         pagingUrl="discover/movie?include_video=false&sort_by=popularity.desc&page="
+        total_pages={total_pages}
       />
     </main>
   )
