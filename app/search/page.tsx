@@ -35,6 +35,7 @@ export default async function SearchPage({
         <MovieGrid
           title={`Search results for: ${query}`}
           data={data?.results}
+          total_pages={data?.total_pages}
         />
       )}
     </main>

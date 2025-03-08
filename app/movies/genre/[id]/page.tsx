@@ -18,6 +18,7 @@ const GenrePage = async ({ params }: { params: { id: string } }) => {
         title={`Browse ${genre?.name}`}
         data={movies?.results}
         pagingUrl={`${dataUrl}&page=`}
+        total_pages={movies?.total_pages}
       />
     </main>
   )
