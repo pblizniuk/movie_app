@@ -51,14 +51,14 @@ export default function Nav() {
                 </div>
               </div>
             </span>
-            <Link href="/wishlist">
+            {/* <Link href="/wishlist">
               <span className="flex items-center">
                 <Icon name="wishlist" size="20" className="fill-white" />
                 <span className="ml-1 hidden whitespace-nowrap lg:block">
                   Wishlist
                 </span>
               </span>
-            </Link>
+            </Link> */}
           </nav>
           <div className="flex items-center gap-10">
             <Search showDropdown />
