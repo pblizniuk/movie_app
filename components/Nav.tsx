@@ -10,10 +10,15 @@ export default function Nav() {
   return (
     <>
       <div className="sticky top-0 z-50 -mb-[56px] w-full bg-stone-900/70 py-2 backdrop-blur-md">
-        <div className="mx-auto grid max-w-[2000px] grid-cols-[auto_1fr_auto] content-center justify-center px-3 align-middle">
+        <div className="mx-auto grid max-w-[2000px] grid-cols-[auto_1fr_auto] content-center justify-center px-4 align-middle">
           <Link href="/" className="mr-4 mt-1 md:mr-10">
-            <div className="logo font-rock-salt text-xl font-extrabold text-lime-500">
-              Screen<span className="text-foreground/80">Bits</span>
+            <div className="logo text-xl font-extrabold text-lime-500">
+              <div className="font-rock-salt">
+                Trailer<span className="text-foreground/80">.ly</span>
+              </div>
+              {/* <div className="font-rock-salt text-[10px] font-light text-white">
+                by Paul Blizniuk
+              </div> */}
             </div>
           </Link>
           <nav className="flex gap-5 px-3 py-2 font-semibold">
@@ -57,7 +62,7 @@ export default function Nav() {
           </nav>
           <div className="flex items-center gap-10">
             <Search showDropdown />
-            <AuthButton />
+            {/* <AuthButton /> */}
           </div>
         </div>
       </div>

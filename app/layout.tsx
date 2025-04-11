@@ -44,9 +44,9 @@ export default function RootLayout({
             <span
               className={`pl-3 font-rock-salt text-xs font-extrabold text-lime-500`}
             >
-              Screen<span className="text-foreground/80">Bits </span>
+              Trailer<span className="text-foreground/80">.ly </span>
             </span>
-            Trailer App by Paul Blizniuk
+            by Paul Blizniuk
           </p>
         </footer>
         {modal}
